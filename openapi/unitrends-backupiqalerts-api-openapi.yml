@@ -1,0 +1,256 @@
+openapi: 3.0.4
+info:
+  title: Public Agents BackupIqAlerts API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: BackupIqAlerts
+paths:
+  /v1/backupiq/alerts:
+    get:
+      tags:
+      - BackupIqAlerts
+      summary: Returns a list of BackupIQ alerts based on filtering, ordering and paging criteria.
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: type
+        in: query
+        description: The type of the alert.
+        required: true
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertTypeModel'
+      - name: severity
+        in: query
+        description: The severity of the alert.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertSeverityModel'
+      - name: is_muted
+        in: query
+        description: "Indicates that alert is muted on UI by settings of alerts specified on the portal.\r\nMuted alerts are not displayed on the portal UI.\r\nAPI returns not muted alerts by default."
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.MutedFilterModel'
+      - name: customer_id
+        in: query
+        description: The id of the customer in UUID format.
+        schema:
+          type: string
+          format: uuid
+      - name: customer_name
+        in: query
+        description: The name of the customer. All of the customers that contain passed parameter will be in filtered result.
+        schema:
+          type: string
+      - name: asset_tag
+        in: query
+        description: The id of the appliance.
+        schema:
+          type: string
+      - name: appliance_name
+        in: query
+        description: The name of the appliance. All of the appliances that contain passed parameter will be in filtered result.
+        schema:
+          type: string
+      - name: asset_name
+        in: query
+        description: The name of the asset. All of the asset that contain passed parameter will be in filtered result.
+        schema:
+          type: string
+      - name: asset_key
+        in: query
+        description: The unique identifier of the asset.
+        schema:
+          type: string
+          format: uuid
+      - name: job_name
+        in: query
+        description: The name of the job. All of the jobs that contain passed parameter will be in filtered result.
+        schema:
+          type: string
+      - name: job_type
+        in: query
+        description: The type of the job. All of the jobs that contain passed parameter will be in filtered result.
+        schema:
+          type: string
+      - name: is_dismissed
+        in: query
+        description: "Flag that indicates dismiss status of an alert. It means whether a user dismissed an alert in BackupIQ interface.\r\nThe absence of the parameter leads to both dismissed and not dismissed alerts in the filtered result."
+        schema:
+          type: boolean
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.OrderColumnModel'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc", "desc".
+        schema:
+          type: string
+      - name: created_time_direction
+        in: query
+        description: Direction of ordering by created_time field, which always the second ordering field. E.g. "asc", "desc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel'
+                  - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.JobAlertModel'
+                  - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.ConditionalAlertModel'
+components:
+  schemas:
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.ConditionalAlertModel:
+      allOf:
+      - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel'
+      - type: object
+        properties:
+          interrogation_message:
+            type: string
+            description: The result of interrogation for alert underlying reason.
+            nullable: true
+            example: Appliance is offline. Backups have not been running as a result. Open appliance details page and check that the appliance is powered on and connected to the network. If the problem persists, please open a support case.
+        additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.JobAlertModel:
+      allOf:
+      - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel'
+      - type: object
+        properties:
+          job_name:
+            type: string
+            description: The name of the job
+            nullable: true
+            example: Full Backup Job 1
+          job_type:
+            type: string
+            description: The type of the job
+            nullable: true
+            example: Backup
+        additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertTypeModel'
+        appliance_name:
+          type: string
+          description: The name of the appliance.
+          nullable: true
+          example: Appliance 1
+        asset_tag:
+          type: string
+          description: The id of the appliance.
+          nullable: true
+          example: 8008-100-70130
+        customer_id:
+          type: string
+          description: The id of the customer in UUID format.
+          format: uuid
+          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
+        customer_name:
+          type: string
+          description: The name of the customer.
+          nullable: true
+          example: John Doe
+        message:
+          type: string
+          description: The alert message.
+          nullable: true
+          example: The asset backup was not created for the last 1 hour(s).
+        severity:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertSeverityModel'
+        created_time:
+          type: string
+          description: The alert creation time.
+          format: date-time
+          example: '2021-06-07T13:28:32.200Z'
+        is_dismissed:
+          type: boolean
+          description: Flag that indicates dismiss status of an alert. It means whether a user dismissed an alert in BackupIQ interface.
+          example: true
+        is_muted:
+          type: boolean
+          description: Flag indicates that alert is muted on UI by settings of alerts specified on the portal.
+          example: true
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.OrderColumnModel:
+      enum:
+      - type
+      - severity
+      - customer_id
+      - customer_name
+      - asset_tag
+      - appliance_name
+      - asset_name
+      - asset_key
+      - job_name
+      - job_type
+      - is_dismissed
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertTypeModel:
+      enum:
+      - alert
+      - job
+      - conditional
+      - helix
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.MutedFilterModel:
+      enum:
+      - 'false'
+      - 'true'
+      - all
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertSeverityModel:
+      enum:
+      - alarm
+      - critical
+      - warning
+      type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header

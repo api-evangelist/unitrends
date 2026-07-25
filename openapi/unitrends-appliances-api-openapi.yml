@@ -1,0 +1,191 @@
+openapi: 3.0.4
+info:
+  title: Public Agents Appliances API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: Appliances
+paths:
+  /v1/appliances:
+    get:
+      tags:
+      - Appliances
+      summary: Returns a list of appliance details based on filtering, ordering and paging criteria.
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: customer_id
+        in: query
+        description: The id of the customer in UUID format.
+        schema:
+          type: string
+          format: uuid
+      - name: asset_tag
+        in: query
+        description: The id of the appliance.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: The name of the appliance. All of the appliances that at least contain part of the passed parameter will be filtered.
+        schema:
+          type: string
+      - name: is_online
+        in: query
+        description: Flag that indicates whether appliance is online. True means online.
+        schema:
+          type: boolean
+      - name: total_mb_size_from
+        in: query
+        description: Minimum size of storage attached to the appliance in MB.
+        schema:
+          type: integer
+          format: int64
+      - name: total_mb_size_to
+        in: query
+        description: Maximum size of storage attached to the appliance in MB.
+        schema:
+          type: integer
+          format: int64
+      - name: total_mb_free_from
+        in: query
+        description: Minimum amount of free space on storage attached to the appliance in MB.
+        schema:
+          type: integer
+          format: int64
+      - name: total_mb_free_to
+        in: query
+        description: Maximum amount of free space on storage attached to the appliance in MB.
+        schema:
+          type: integer
+          format: int64
+      - name: version
+        in: query
+        description: The version of the appliance. All of the appliances that at least contain part of the passed parameter will be filtered.
+        schema:
+          type: string
+      - name: helix_status
+        in: query
+        description: The status of helix for the appliances.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus'
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesRequestOrderColumn'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesResponse'
+components:
+  schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus:
+      enum:
+      - None
+      - Agent
+      - AutoUpdate
+      - Unknown
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesResponse:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          description: The id of the customer in UUID format.
+          format: uuid
+          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
+        asset_tag:
+          type: string
+          description: The id of the appliance.
+          nullable: true
+          example: 8008-100-70130
+        name:
+          type: string
+          description: The name of the appliance.
+          nullable: true
+          example: Appliance 1
+        is_online:
+          type: boolean
+          description: Flag that indicates whether appliance is online. True means online.
+          example: true
+        total_mb_size:
+          type: integer
+          description: The size of storage attached to the appliance in MB.
+          format: int64
+          example: 86203240
+        total_mb_free:
+          type: integer
+          description: The amount of free space on storage attached to the appliance in MB.
+          format: int64
+          example: 862032
+        version:
+          type: string
+          description: The version of the appliance.
+          nullable: true
+          example: 10.4.7-1.202007131947.CentOS6
+        helix_status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesRequestOrderColumn:
+      enum:
+      - asset_tag
+      - customer_id
+      - is_online
+      - name
+      - total_mb_free
+      - total_mb_size
+      - version
+      type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header

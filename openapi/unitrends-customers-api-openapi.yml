@@ -1,0 +1,109 @@
+openapi: 3.0.4
+info:
+  title: Public Agents Customers API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: Customers
+paths:
+  /v1/customers:
+    get:
+      tags:
+      - Customers
+      summary: Returns a list of customer details based on filtering, ordering and paging criteria.
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: id
+        in: query
+        description: The id of the customer in the UUID format.
+        schema:
+          type: string
+          format: uuid
+      - name: name
+        in: query
+        description: The name of the customer.
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersRequestOrderColumn'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersResponse'
+components:
+  schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the customer in the UUID format.
+          format: uuid
+          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
+        name:
+          type: string
+          description: The name of the customer.
+          nullable: true
+          example: John Doe
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersRequestOrderColumn:
+      enum:
+      - id
+      - name
+      type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header

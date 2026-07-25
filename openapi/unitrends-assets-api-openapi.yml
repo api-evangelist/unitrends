@@ -1,0 +1,396 @@
+openapi: 3.0.4
+info:
+  title: Public Agents Assets API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: Assets
+paths:
+  /v1/assets:
+    get:
+      tags:
+      - Assets
+      summary: Returns a list of asset details based on filtering, ordering and paging criteria.
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: customer_id
+        in: query
+        description: The id of the customer in UUID format.
+        schema:
+          type: string
+          format: uuid
+      - name: asset_tag
+        in: query
+        description: The id of the appliance.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: The name of the asset. All of the asset that contain passed parameter will be in filtered result.
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: The type of the asset.
+        schema:
+          type: string
+      - name: ip
+        in: query
+        description: The ip of the asset.
+        schema:
+          type: string
+      - name: mac
+        in: query
+        description: The MAC address of the asset.
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: The unique identifier of the asset.
+        schema:
+          type: string
+          format: uuid
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsRequestOrderColumn'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: include
+        in: query
+        description: 'This parameter allows to include additional data to the response. To use it please add to the query parameters one or multiple of the following: "?include[backups]=last&include[links]=all"'
+        style: deepObject
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsResponse'
+  /api/epb/v1/assets:
+    get:
+      tags:
+      - Assets
+      summary: Returns a list of asset details based on filtering, ordering and paging criteria.
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: id
+        in: query
+        description: The id of the asset.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: The name of the asset.
+        schema:
+          type: string
+      - name: customer_id
+        in: query
+        description: The id of the customer in UUID format.
+        schema:
+          type: string
+          format: uuid
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsRequestOrderColumn'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsResponse'
+components:
+  schemas:
+    MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the asset.
+          nullable: true
+          example: APPLONE
+        name:
+          type: string
+          description: The name of asset.
+          nullable: true
+          example: Laptop One
+        licenseType:
+          type: string
+          description: Type of license
+          nullable: true
+        customerName:
+          type: string
+          description: The name of the customer.
+          nullable: true
+        customerId:
+          type: string
+          description: The id of the customer in the UUID format.
+          format: uuid
+        policyId:
+          type: string
+          description: Id of backup policy
+          format: uuid
+        storageUsedBytes:
+          type: integer
+          description: Storage used bytes
+          format: int64
+        status:
+          type: string
+          description: Status of the asset
+          nullable: true
+        os:
+          type: string
+          description: Operating system of the asset
+          nullable: true
+        backupEnabled:
+          type: boolean
+          description: Is Backup functionality ON
+          nullable: true
+        hasCustomerManagedKey:
+          type: boolean
+          description: Are backups encrypted
+        mac:
+          type: string
+          description: Mac address of the asset
+          nullable: true
+        timeZoneOffsetMinutes:
+          type: integer
+          description: Asset time zone offset from UTC
+          format: int32
+        createdTimestamp:
+          type: string
+          description: Asset creation date in uniview
+          format: date-time
+        lastSuccessfulBackupTimestamp:
+          type: string
+          description: Asset last successful backup date
+          format: date-time
+          nullable: true
+        lastOnlineTimestamp:
+          type: string
+          description: Asset last online date
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
+      enum:
+      - Successful
+      - Warning
+      - Failed
+      - InProgress
+      - Unknown
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
+      enum:
+      - Successful
+      - Failed
+      - Unknown
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse:
+      enum:
+      - WebInterface
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse:
+      type: object
+      properties:
+        rel:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse'
+        href:
+          type: string
+          description: Specifies the URL the link goes to.
+          format: uri
+          nullable: true
+          example: https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsRequestOrderColumn:
+      enum:
+      - customer_id
+      - asset_tag
+      - name
+      - type
+      - ip
+      - mac
+      - key
+      type: string
+    MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsRequestOrderColumn:
+      enum:
+      - name
+      - licenseType
+      - storageUsedBytes
+      - status
+      - customerName
+      - oS
+      - id
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse:
+      type: object
+      properties:
+        start_time:
+          type: string
+          description: The backup start time.
+          format: date-time
+          example: '2020-02-28T13:27:15.200Z'
+        complete_time:
+          type: string
+          description: The backup completion time.
+          format: date-time
+          nullable: true
+          example: '2020-02-28T13:28:32.200Z'
+        size:
+          type: integer
+          description: The size of the backup in MB.
+          format: int64
+          example: 8060
+        type:
+          type: string
+          description: The type of the backup.
+          nullable: true
+          example: Full
+        status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
+        replication_status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsResponse:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          description: The id of the customer in UUID format.
+          format: uuid
+          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
+        asset_tag:
+          type: string
+          description: The id of the appliance.
+          nullable: true
+          example: 8008-100-70130
+        name:
+          type: string
+          description: The name of the asset.
+          nullable: true
+          example: Asset 1
+        type:
+          type: string
+          description: The type of the asset.
+          nullable: true
+          example: Image Level Instance
+        ip:
+          type: string
+          description: The ip of the asset.
+          nullable: true
+          example: 192.168.127.4
+        mac:
+          type: string
+          description: The MAC address of the asset.
+          nullable: true
+          example: 00:00:00:00:00:16
+        key:
+          type: string
+          description: The unique identifier of the asset.
+          format: uuid
+          example: 9c07464f-482c-4296-b5f9-fb232016db90
+        last_backup:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse'
+          description: "Links to other resources in API or web application user interface.\r\nThis field is not present by default.\r\nIf application should return this additional links payload, request should contain query parameter \"?include[links]=all\""
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header

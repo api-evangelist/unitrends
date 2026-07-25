@@ -1,0 +1,167 @@
+openapi: 3.0.4
+info:
+  title: Public Agents DomainsEntra API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: DomainsEntra
+paths:
+  /v1/entra/domains:
+    get:
+      tags:
+      - DomainsEntra
+      summary: Returns a list of Microsoft Entra ID domains/tenants
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel'
+components:
+  schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel:
+      type: object
+      properties:
+        msId:
+          type: string
+          description: Microsoft Entra ID domain id
+          nullable: true
+        name:
+          type: string
+          description: Name of the domain
+          nullable: true
+        internalId:
+          type: string
+          description: UniView Domain id
+          nullable: true
+        region:
+          type: string
+          description: Region of the domain
+          nullable: true
+        licenseSubtype:
+          type: string
+          description: License type
+          nullable: true
+        mappedCustomerId:
+          type: string
+          description: Mapped customer UniView id
+          format: uuid
+          nullable: true
+        mappedCustomerName:
+          type: string
+          description: Mapped customer UniView name
+          nullable: true
+        numberOfSeats:
+          type: integer
+          description: Number of seats used
+          format: int32
+          nullable: true
+        numberOfUsedLicenses:
+          type: integer
+          description: Number of licenses used
+          format: int32
+          nullable: true
+        assignedLicenses:
+          type: integer
+          description: Number of licenses assigned to the domain
+          format: int32
+          nullable: true
+        expirationDate:
+          type: string
+          description: Domain expiration date
+          format: date-time
+          nullable: true
+        backupStatusForLast7Days:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        last30Backups:
+          type: array
+          items:
+            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel'
+          description: List of last 30 backups
+          nullable: true
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
+      enum:
+      - success
+      - partial
+      - failed
+      - successfulNoChanges
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
+      enum:
+      - name
+      - mapped_customer_name
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel:
+      type: object
+      properties:
+        backupStatus:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        backupTimestamp:
+          type: string
+          description: Backup date UTC
+          format: date-time
+        problemsCount:
+          type: integer
+          description: Problem count
+          format: int32
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header

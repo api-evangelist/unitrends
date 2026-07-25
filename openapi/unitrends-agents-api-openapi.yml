@@ -1,0 +1,57 @@
+openapi: 3.0.4
+info:
+  title: Public Agents API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: Agents
+paths:
+  /v1/agents/latest:
+    get:
+      tags:
+      - Agents
+      summary: Returns the version of the latest agent and the link to download it.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Agents.GetLatestAgent.GetLatestAgentResponse'
+components:
+  schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Agents.GetLatestAgent.AgentChecksumAlgorithm:
+      enum:
+      - SHA256
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Agents.GetLatestAgent.GetLatestAgentResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: The version of the latest agent.
+          nullable: true
+          example: 3.0.19
+        downloadLocation:
+          type: string
+          description: The link to download the latest agent package.
+          nullable: true
+          example: https://download.backup.net/3.0.19/appliance-agent.tar.gz
+        checksum:
+          type: string
+          description: The hash code for agent file.
+          nullable: true
+          example: 61c7bb1f1d41f2445061f2b3889e15d32fb3062126073104389db5a07be8a4e9
+        checksumAlgorithm:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Agents.GetLatestAgent.AgentChecksumAlgorithm'
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header

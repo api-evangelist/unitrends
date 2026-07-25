@@ -1,0 +1,217 @@
+openapi: 3.0.4
+info:
+  title: Public Agents Backups API
+  description: Description of Public API for Unitrends MSP.
+  version: public_api-v1
+servers:
+- url: https://public-api.backup.net
+security:
+- Bearer: []
+tags:
+- name: Backups
+paths:
+  /v1/backups:
+    get:
+      tags:
+      - Backups
+      summary: Returns a list of backup details based on filtering, ordering and paging criteria.
+      description: Visibility is restricted by tenant which issued credentials for access.
+      parameters:
+      - name: customer_id
+        in: query
+        description: The id of the customer in UUID format.
+        schema:
+          type: string
+          format: uuid
+      - name: asset_tag
+        in: query
+        description: The id of the appliance.
+        schema:
+          type: string
+      - name: start_time_from
+        in: query
+        description: Minimum backup start time.
+        schema:
+          type: string
+          format: date-time
+      - name: start_time_to
+        in: query
+        description: Maximum backup start time.
+        schema:
+          type: string
+          format: date-time
+      - name: complete_time_from
+        in: query
+        description: Minimum backup completion time.
+        schema:
+          type: string
+          format: date-time
+      - name: complete_time_to
+        in: query
+        description: Maximum backup completion time.
+        schema:
+          type: string
+          format: date-time
+      - name: size_from
+        in: query
+        description: Minimum backup size in MB.
+        schema:
+          type: integer
+          format: int64
+      - name: size_to
+        in: query
+        description: Maximum backup size in MB.
+        schema:
+          type: integer
+          format: int64
+      - name: type
+        in: query
+        description: The type of the backup.
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: The status of the backup.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
+      - name: replication_status
+        in: query
+        description: The status of the replication.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
+      - name: asset_key
+        in: query
+        description: The unique identifier of the asset.
+        schema:
+          type: string
+          format: uuid
+      - name: order_by
+        in: query
+        description: The ordering field.
+        schema:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsRequestOrderColumn'
+      - name: order_direction
+        in: query
+        description: Direction of the order. E.g. "asc".
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: The page number. Default is 1.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      - name: page_size
+        in: query
+        description: The page size. Default is 50.
+        schema:
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          headers:
+            Paging-Page-Size:
+              description: Current page size.
+              schema:
+                type: integer
+            Paging-Page-Number:
+              description: Current page number.
+              schema:
+                type: integer
+            Paging-Total-Records:
+              description: Total amount of records.
+              schema:
+                type: integer
+            Paging-Total-Pages:
+              description: Total count of pages.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsResponse'
+components:
+  schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsResponse:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          description: The id of the customer in UUID format.
+          format: uuid
+          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
+        asset_tag:
+          type: string
+          description: The id of the appliance.
+          nullable: true
+          example: 8008-100-70130
+        start_time:
+          type: string
+          description: The backup start time.
+          format: date-time
+          example: '2020-02-28T13:27:15.200Z'
+        complete_time:
+          type: string
+          description: The backup completion time.
+          format: date-time
+          nullable: true
+          example: '2020-02-28T13:28:32.200Z'
+        size:
+          type: integer
+          description: The size of the backup in MB.
+          format: int64
+          example: 8060
+        type:
+          type: string
+          description: The type of the backup.
+          nullable: true
+          example: Full
+        status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
+        replication_status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
+        asset_key:
+          type: string
+          description: The unique identifier of the asset.
+          format: uuid
+          example: 9c07464f-482c-4296-b5f9-fb232016db90
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsRequestOrderColumn:
+      enum:
+      - asset_tag
+      - customer_id
+      - start_time
+      - complete_time
+      - size
+      - type
+      - status
+      - replication_status
+      - asset_key
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
+      enum:
+      - Successful
+      - Warning
+      - Failed
+      - InProgress
+      - Unknown
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
+      enum:
+      - Successful
+      - Failed
+      - Unknown
+      type: string
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+      name: Authorization
+      in: header
