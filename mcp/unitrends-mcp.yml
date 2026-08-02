@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/unitrends-public-api-openapi.json
+note: >-
+  No official hosted or published Unitrends MCP server was found (web search
+  2026-07-21). This is a candidate tool list derived from the UniView Portal
+  Public API operations; the spec publishes no operationIds, so tools are named
+  from tags and reference method + path.
+server:
+  name: unitrends
+  transport: http
+tools:
+- name: get_latest_agent
+  description: Returns the version of the latest endpoint agent and the link to download it.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/agents/latest
+- name: list_appliances
+  description: List backup appliance details with filtering, ordering, and paging.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/appliances
+- name: list_assets
+  description: List protected asset details with filtering, ordering, and paging.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/assets
+- name: list_backupiq_alerts
+  description: List BackupIQ alerts (alert, job, conditional, helix) with filtering.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/backupiq/alerts
+- name: list_backups
+  description: List backup details (status, size, replication status) with filtering.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/backups
+- name: list_customers
+  description: List customer details for the tenant that issued the credentials.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/customers
+- name: list_spanning_domains
+  description: List spanning (SaaS backup) domains/tenants.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/spanning/domains
+- name: list_spanning_domains_v2
+  description: List spanning domains/tenants (v2 model).
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v2/spanning/domains
+- name: list_spanning_domain_users
+  description: List users of a spanning domain/tenant.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/spanning/domains/{domainId}/users
+- name: list_spanning_domain_users_v2
+  description: List users of a spanning domain/tenant (v2 model).
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v2/spanning/domains/{domainId}/users
+- name: list_entra_domains
+  description: List Microsoft Entra ID domains/tenants.
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /v1/entra/domains
+- name: list_endpoint_assets
+  description: List endpoint backup assets (license, storage used, OS, backup status).
+  source_operation: openapi/unitrends-public-api-openapi.json#GET /api/epb/v1/assets

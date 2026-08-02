@@ -1,0 +1,61 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/unitrends-public-api-openapi.json
+docs: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+description: >-
+  Cross-cutting request/response semantics of the UniView / Unitrends MSP
+  Portal Public API. The public surface is read-only (12 GET operations)
+  scoped to the tenant that issued the API credentials.
+
+base_url: https://public-api.backup.net
+api_style: REST over HTTPS, JSON responses
+
+authentication:
+  scheme: OAuth 2.0 client credentials -> Bearer access token in Authorization header
+  token_endpoint: https://login.backup.net/connect/token
+  detail: authentication/unitrends-authentication.yml
+
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key mechanism is documented; all published public API
+    operations are GETs (inherently idempotent), and no write surface is
+    exposed publicly.
+
+pagination:
+  style: page-number
+  request_params:
+    page_number: The page number, default 1
+    page_size: The page size, default 50
+  response_headers:
+    Paging-Page-Size: Current page size
+    Paging-Page-Number: Current page number
+    Paging-Total-Records: Total amount of records
+    Paging-Total-Pages: Total count of pages
+
+ordering:
+  request_params:
+    order_by: The ordering field (enum per resource)
+    order_direction: '"asc" or "desc"'
+    created_time_direction: Secondary ordering direction on BackupIQ alerts
+
+field_expansion:
+  supported: true
+  style: deepObject include parameter
+  examples:
+  - '?include[backups]=last&include[links]=all (assets: embed last backup and resource links)'
+  - '?include[users]=false (spanning domains: exclude embedded users)'
+
+tenancy:
+  note: Visibility of every list operation is restricted by the tenant which issued the credentials.
+
+versioning:
+  scheme: uri-path (v1, v2)
+  detail: lifecycle/unitrends-lifecycle.yml
+
+error_envelope:
+  documented: false
+  note: The OpenAPI documents only 200 responses; no error envelope or problem-details format is published.
+
+rate_limits:
+  documented: false

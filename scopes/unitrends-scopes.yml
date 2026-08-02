@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://login.backup.net/.well-known/openid-configuration
+docs: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+note: >-
+  The Public API OpenAPI declares only a Bearer header scheme (no oauth2 flows
+  or per-operation scopes), so the derive pass yields none. The identity
+  service behind it (login.backup.net, UniView / Unitrends MSP portal)
+  publishes its supported scopes via OIDC discovery; API access tokens are
+  obtained with the OAuth 2.0 client_credentials grant and visibility is
+  restricted by the tenant which issued the credentials rather than by
+  fine-grained scopes.
+schemes:
+- name: UniView Portal identity service
+  issuer: https://login.backup.net
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.backup.net/connect/token
+  - flow: authorizationCode
+    authorizationUrl: https://login.backup.net/connect/authorize
+    tokenUrl: https://login.backup.net/connect/token
+scopes:
+- scope: openid
+  description: OpenID Connect authentication scope.
+  sources: [well-known/unitrends-openid-configuration.json]
+- scope: role
+  description: Role claims for the authenticated principal.
+  sources: [well-known/unitrends-openid-configuration.json]
+- scope: profile
+  description: Profile claims for the authenticated principal.
+  sources: [well-known/unitrends-openid-configuration.json]

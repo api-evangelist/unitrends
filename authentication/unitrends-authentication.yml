@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/unitrends-public-api-openapi.json
+docs: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+summary:
+  types:
+  - oauth2
+  - http-bearer
+  - session-token
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'JWT Authorization header using the Bearer scheme. Example value: "Bearer {token}"'
+  sources:
+  - openapi/unitrends-public-api-openapi.json
+- name: UniView Portal OAuth 2.0 client credentials
+  type: oauth2
+  api: Unitrends MSP Public API (UniView Portal)
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.backup.net/connect/token
+  discovery: https://login.backup.net/.well-known/openid-configuration
+  client_auth_methods:
+  - client_secret_post
+  - private_key_jwt
+  - client_secret_basic
+  credential_issuance: >-
+    Create public API credentials in the UniView Portal (API Access view >
+    + New); the portal issues a Client ID and Client Secret (the secret is
+    shown once). Exchange them at POST https://login.backup.net/connect/token
+    with grant_type=client_credentials (HTTP Basic client_id:client_secret),
+    then pass the access_token as "Authorization: Bearer {token}".
+  docs: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- name: Appliance session token
+  type: session-token
+  api: Unitrends appliance REST API (Recovery Series / Unitrends Backup)
+  description: >-
+    POST /api/login with the username and password of a valid system user
+    returns an auth_token (with a timeout in seconds) that must be passed in
+    the HTTP header of every subsequent appliance REST API request; POST
+    /api/logout ends the session.
+  docs: https://github.com/Unitrends/unitrends-api-doc/wiki/Login

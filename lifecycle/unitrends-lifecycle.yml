@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/unitrends-public-api-openapi.json + https://status.kaseya.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  evidence: >-
+    Public API paths are versioned in the URI (/v1/..., /v2/spanning/domains,
+    /api/epb/v1/...); v2 variants of the spanning domain endpoints coexist
+    with v1.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or RFC 8594 Sunset header support was found.
+status_page: https://status.kaseya.com/
+status_page_note: >-
+  Kaseya's status page covers the Unitrends services (Unitrends Cloud
+  Services, Unitrends Backup for Microsoft Azure, Unitrends Endpoint Backup,
+  Unitrends Endpoint Backup for PCs / with Disaster Recovery).
+deprecated_operations: []

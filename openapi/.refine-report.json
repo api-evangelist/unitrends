@@ -1,0 +1,34 @@
+{
+  "provider": "unitrends",
+  "sources": [
+    "unitrends-agents-api-openapi.yml",
+    "unitrends-appliances-api-openapi.yml",
+    "unitrends-assets-api-openapi.yml",
+    "unitrends-backupiqalerts-api-openapi.yml",
+    "unitrends-backups-api-openapi.yml",
+    "unitrends-customers-api-openapi.yml",
+    "unitrends-domains-api-openapi.yml",
+    "unitrends-domainsentra-api-openapi.yml",
+    "unitrends-domainsv2-api-openapi.yml",
+    "unitrends-domainusers-api-openapi.yml",
+    "unitrends-domainusersv2-api-openapi.yml"
+  ],
+  "outputs": [
+    "unitrends-agents-api-openapi.yml",
+    "unitrends-appliances-api-openapi.yml",
+    "unitrends-assets-api-openapi.yml",
+    "unitrends-backupiqalerts-api-openapi.yml",
+    "unitrends-backups-api-openapi.yml",
+    "unitrends-customers-api-openapi.yml",
+    "unitrends-domains-api-openapi.yml",
+    "unitrends-domainsentra-api-openapi.yml",
+    "unitrends-domainsv2-api-openapi.yml",
+    "unitrends-domainusers-api-openapi.yml",
+    "unitrends-domainusersv2-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

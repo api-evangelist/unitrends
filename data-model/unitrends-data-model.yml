@@ -1,0 +1,84 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/unitrends-public-api-openapi.json
+description: >-
+  Entity-relationship graph of the UniView / Unitrends MSP Portal Public API,
+  derived from response schemas and id-reference fields (customer_id,
+  asset_tag, asset_key, policyId, domainId).
+entities:
+- name: Customer
+  id_field: id (uuid)
+  source: 'GET /v1/customers'
+- name: Appliance
+  id_field: asset_tag
+  source: 'GET /v1/appliances'
+  notes: Carries storage size/free, version, online flag, helix_status.
+- name: Asset
+  id_field: key (uuid)
+  source: 'GET /v1/assets'
+  notes: Protected machine/instance on an appliance; embeds last_backup and links via include[].
+- name: Backup
+  source: 'GET /v1/backups'
+  notes: Backup records with status, replication_status, size, type.
+- name: BackupIqAlert
+  source: 'GET /v1/backupiq/alerts'
+  notes: Polymorphic (alert, job, conditional, helix models).
+- name: SpanningDomain
+  id_field: domainId
+  source: 'GET /v1/spanning/domains, GET /v2/spanning/domains'
+- name: DomainUser
+  source: 'GET /v1/spanning/domains/{domainId}/users'
+- name: EntraDomain
+  source: 'GET /v1/entra/domains'
+- name: EndpointAsset
+  id_field: id
+  source: 'GET /api/epb/v1/assets'
+  notes: Endpoint backup asset; references policyId (backup policy) and customerId.
+- name: Agent
+  source: 'GET /v1/agents/latest'
+  notes: Latest endpoint agent version + download location + SHA256 checksum.
+relationships:
+- from: Appliance
+  to: Customer
+  kind: belongs_to
+  via: customer_id
+- from: Asset
+  to: Customer
+  kind: belongs_to
+  via: customer_id
+- from: Asset
+  to: Appliance
+  kind: belongs_to
+  via: asset_tag
+- from: Asset
+  to: Backup
+  kind: has_many
+  via: asset_key (backup filter) / last_backup (embedded)
+- from: Backup
+  to: Customer
+  kind: belongs_to
+  via: customer_id
+- from: Backup
+  to: Appliance
+  kind: belongs_to
+  via: asset_tag
+- from: BackupIqAlert
+  to: Customer
+  kind: belongs_to
+  via: customer_id
+- from: BackupIqAlert
+  to: Appliance
+  kind: belongs_to
+  via: asset_tag
+- from: BackupIqAlert
+  to: Asset
+  kind: belongs_to
+  via: asset_key
+- from: SpanningDomain
+  to: DomainUser
+  kind: has_many
+  via: domainId path parameter
+- from: EndpointAsset
+  to: Customer
+  kind: belongs_to
+  via: customerId

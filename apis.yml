@@ -1,25 +1,258 @@
 aid: unitrends
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/unitrends.png
 name: Unitrends
-description: Unitrends is a company surfaced as a portfolio company of insight-partners and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Unitrends, a Kaseya company, provides all-in-one backup and disaster recovery
+  (BCDR) solutions that secure, defend, and recover data across on-prem data
+  centers, cloud, SaaS, and endpoints. The platform spans Recovery Series
+  backup appliances, Unitrends Backup software, endpoint backup, and the
+  UniView / Unitrends MSP portal, with ransomware detection, automated recovery
+  assurance testing, and BackupIQ intelligence. Developers get a UniView Portal
+  Public API (OAuth 2.0 client credentials via login.backup.net) for customers,
+  appliances, assets, backups, and BackupIQ alerts, plus a documented
+  per-appliance REST API and a community PowerShell toolkit.
 url: https://raw.githubusercontent.com/api-evangelist/unitrends/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - insight-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched-provider
 specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Backup
+- Disaster Recovery
+- Data Protection
+- BCDR
+- Ransomware Protection
+- MSP
+- Endpoint Backup
+apis:
+- aid: unitrends:unitrends-agents-api
+  name: Unitrends Agents API
+  description: The Agents API from Unitrends — 1 operation(s) for agents.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-agents-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-appliances-api
+  name: Unitrends Appliances API
+  description: The Appliances API from Unitrends — 1 operation(s) for appliances.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - Appliances
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-appliances-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-assets-api
+  name: Unitrends Assets API
+  description: The Assets API from Unitrends — 2 operation(s) for assets.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-assets-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-backupiqalerts-api
+  name: Unitrends BackupIqAlerts API
+  description: The BackupIqAlerts API from Unitrends — 1 operation(s) for backupiqalerts.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - BackupIqAlerts
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-backupiqalerts-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-backups-api
+  name: Unitrends Backups API
+  description: The Backups API from Unitrends — 1 operation(s) for backups.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - Backups
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-backups-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-customers-api
+  name: Unitrends Customers API
+  description: The Customers API from Unitrends — 1 operation(s) for customers.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-customers-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-domains-api
+  name: Unitrends Domains API
+  description: The Domains API from Unitrends — 1 operation(s) for domains.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-domains-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-domainsentra-api
+  name: Unitrends DomainsEntra API
+  description: The DomainsEntra API from Unitrends — 1 operation(s) for domainsentra.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - DomainsEntra
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-domainsentra-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-domainsv2-api
+  name: Unitrends DomainsV2 API
+  description: The DomainsV2 API from Unitrends — 1 operation(s) for domainsv2.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - DomainsV2
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-domainsv2-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-domainusers-api
+  name: Unitrends DomainUsers API
+  description: The DomainUsers API from Unitrends — 1 operation(s) for domainusers.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - DomainUsers
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-domainusers-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- aid: unitrends:unitrends-domainusersv2-api
+  name: Unitrends DomainUsersV2 API
+  description: The DomainUsersV2 API from Unitrends — 1 operation(s) for domainusersv2.
+  humanURL: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  baseURL: https://public-api.backup.net
+  tags:
+  - DomainUsersV2
+  properties:
+  - type: OpenAPI
+    url: openapi/unitrends-domainusersv2-api-openapi.yml
+  - type: APIReference
+    url: https://apidoc-public-api.backup.net/swagger-ui-v2/index.html
+  - type: GettingStarted
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/unitrends-domain-security.yml
+- type: Authentication
+  url: authentication/unitrends-authentication.yml
 - type: Website
-  url: http://www.unitrends.com/
+  url: https://www.unitrends.com/
+- type: Blog
+  url: https://www.unitrends.com/blog/
+- type: Support
+  url: https://helpdesk.kaseya.com/hc/en-gb
+- type: GitHubOrganization
+  url: https://github.com/Unitrends
+- type: Documentation
+  url: https://github.com/Unitrends/unitrends-api-doc/wiki
+- type: Pricing
+  url: https://www.unitrends.com/request/pricing/
+- type: TermsOfService
+  url: https://www.kaseya.com/legal/website-terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.kaseya.com/legal/kaseya-privacy-statement/
+- type: StatusPage
+  url: https://status.kaseya.com/
+- type: CaseStudies
+  url: https://www.unitrends.com/case-studies/
+- type: Login
+  url: https://portal.backup.net/
+- type: WellKnown
+  url: well-known/unitrends-well-known.yml
+- type: MCPServer
+  url: mcp/unitrends-mcp.yml
+- type: LLMsTxt
+  url: llms/unitrends-llms.txt
+- type: Overlay
+  url: overlays/unitrends-public-api-overlay.yaml
+- type: Conformance
+  url: conformance/unitrends-conformance.yml
+- type: Lifecycle
+  url: lifecycle/unitrends-lifecycle.yml
+- type: OAuthScopes
+  url: scopes/unitrends-scopes.yml
+- type: Packages
+  url: packages/unitrends-packages.yml
+- type: Conventions
+  url: conventions/unitrends-conventions.yml
+- type: DataModel
+  url: data-model/unitrends-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

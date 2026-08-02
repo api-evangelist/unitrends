@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: searched
+source: npm, PyPI, NuGet, PowerShell Gallery searches + https://github.com/Unitrends
+note: >-
+  No first-party client libraries were found on npm, PyPI, NuGet, or the
+  PowerShell Gallery (searched 2026-07-21). The Unitrends GitHub org publishes
+  a community PowerShell toolkit whose README states the scripts are "as is"
+  and not officially supported by Unitrends.
+packages:
+- language: powershell
+  registry: github
+  name: unitrends-pstoolkit
+  url: https://github.com/Unitrends/unitrends-pstoolkit
+  install: 'Download from GitHub (requires PowerShell 4.0+ and Unitrends UEB/RS 9.0+)'
+  official: false
+  support: community
+  notes: Published under the Unitrends GitHub org; community-supported PowerShell cmdlets for the appliance REST API.

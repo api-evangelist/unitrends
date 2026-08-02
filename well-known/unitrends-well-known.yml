@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: probed /.well-known/ on www.unitrends.com, public-api.backup.net, and login.backup.net
+hosts:
+  - host: https://www.unitrends.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://public-api.backup.net
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://login.backup.net
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: unitrends-openid-configuration.json
+        note: >-
+          OIDC discovery document for the UniView / Unitrends MSP portal identity
+          service (issuer https://login.backup.net). Documented as the discovery
+          endpoint for public API auth in the UniView help
+          (https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm).

@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: unitrends-monitor-backup-estate.md
+  name: Monitor a Unitrends backup estate
+  api: openapi/unitrends-public-api-openapi.json
+  operations:
+  - 'GET /v1/customers'
+  - 'GET /v1/appliances'
+  - 'GET /v1/assets'
+  - 'GET /v1/backups'
+  - 'GET /v1/backupiq/alerts'
+- file: unitrends-saas-tenant-inventory.md
+  name: Inventory SaaS backup tenants and users
+  api: openapi/unitrends-public-api-openapi.json
+  operations:
+  - 'GET /v2/spanning/domains'
+  - 'GET /v2/spanning/domains/{domainId}/users'
+  - 'GET /v1/entra/domains'
+  - 'GET /api/epb/v1/assets'
+  - 'GET /v1/agents/latest'

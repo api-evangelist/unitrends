@@ -1,0 +1,69 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Unitrends MSP Public API
+  version: 1.0.0
+extends: openapi/unitrends-public-api-openapi.json
+x-generated: '2026-07-21'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: unitrends
+      harvested: '2026-07-21'
+      source: https://apidoc-public-api.backup.net/swagger/public_api-v1/swagger.json
+      notes: >-
+        Read-only tenant-scoped MSP reporting API. The spec publishes no
+        operationIds and documents only 200 responses; error semantics and
+        rate limits are undocumented.
+    contact:
+      name: Unitrends Support
+      url: https://helpdesk.kaseya.com/hc/en-gb
+- target: $.info.description
+  update: >-
+    Public API of the UniView / Unitrends MSP Backup Portal. Read-only access
+    to appliances, protected assets, backups, customers, BackupIQ alerts,
+    spanning and Microsoft Entra ID domains and users, and the latest endpoint
+    agent, scoped to the tenant that issued the credentials. Authenticate with
+    OAuth 2.0 client credentials at https://login.backup.net/connect/token and
+    send the access token as "Authorization: Bearer {token}".
+- target: $.externalDocs
+  update:
+    description: Using the API (credential creation and token exchange)
+    url: https://help.unitrends.kaseya.com/uniview-help/Content/MSP/public-api.htm
+- target: $.paths['/v1/agents/latest'].get
+  update:
+    operationId: getLatestAgent
+- target: $.paths['/v1/appliances'].get
+  update:
+    operationId: listAppliances
+- target: $.paths['/v1/assets'].get
+  update:
+    operationId: listAssets
+- target: $.paths['/v1/backupiq/alerts'].get
+  update:
+    operationId: listBackupIqAlerts
+- target: $.paths['/v1/backups'].get
+  update:
+    operationId: listBackups
+- target: $.paths['/v1/customers'].get
+  update:
+    operationId: listCustomers
+- target: $.paths['/v1/spanning/domains'].get
+  update:
+    operationId: listSpanningDomains
+- target: $.paths['/v2/spanning/domains'].get
+  update:
+    operationId: listSpanningDomainsV2
+- target: $.paths['/v1/spanning/domains/{domainId}/users'].get
+  update:
+    operationId: listSpanningDomainUsers
+- target: $.paths['/v2/spanning/domains/{domainId}/users'].get
+  update:
+    operationId: listSpanningDomainUsersV2
+- target: $.paths['/v1/entra/domains'].get
+  update:
+    operationId: listEntraDomains
+- target: $.paths['/api/epb/v1/assets'].get
+  update:
+    operationId: listEndpointAssets
