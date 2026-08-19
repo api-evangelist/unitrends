@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public Agents API",
+    "version": "public_api-v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the version of the latest agent and the link to download it.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/v1/agents/latest"
+          },
+          "docs": "Returns the version of the latest agent and the link to download it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

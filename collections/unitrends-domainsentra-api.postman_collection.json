@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "8d433ca2-79ed-4514-a4ad-e5db912d682f",
+      "name": "DomainsEntra",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75d54eec-7e35-4123-a5fc-2681b71d572a",
+          "name": "Returns a list of Microsoft Entra ID domains/tenants",
+          "request": {
+            "name": "Returns a list of Microsoft Entra ID domains/tenants",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "entra",
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68baba2c-3f78-46d2-89d0-db9c4ac43b1e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "entra",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "7443"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "7443"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "7443"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "7443"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"msId\": \"string\",\n    \"name\": \"string\",\n    \"internalId\": \"string\",\n    \"region\": \"string\",\n    \"licenseSubtype\": \"string\",\n    \"mappedCustomerId\": \"9fbf1a2d-d0c4-c4ce-de8b-e1a9c66a6184\",\n    \"mappedCustomerName\": \"string\",\n    \"numberOfSeats\": 1508,\n    \"numberOfUsedLicenses\": 2718,\n    \"assignedLicenses\": 440,\n    \"expirationDate\": \"1982-02-17T11:21:23.226Z\",\n    \"backupStatusForLast7Days\": \"partial\",\n    \"last30Backups\": [\n      {\n        \"backupStatus\": \"partial\",\n        \"backupTimestamp\": \"2018-10-16T08:32:11.520Z\",\n        \"problemsCount\": 7874\n      },\n      {\n        \"backupStatus\": \"partial\",\n        \"backupTimestamp\": \"1976-12-21T22:38:55.365Z\",\n        \"problemsCount\": 4473\n      }\n    ]\n  },\n  {\n    \"msId\": \"string\",\n    \"name\": \"string\",\n    \"internalId\": \"string\",\n    \"region\": \"string\",\n    \"licenseSubtype\": \"string\",\n    \"mappedCustomerId\": \"d24a1e88-9ed3-21fd-b604-5b842d100714\",\n    \"mappedCustomerName\": \"string\",\n    \"numberOfSeats\": 3596,\n    \"numberOfUsedLicenses\": 4199,\n    \"assignedLicenses\": 3422,\n    \"expirationDate\": \"2000-01-22T10:36:09.258Z\",\n    \"backupStatusForLast7Days\": \"partial\",\n    \"last30Backups\": [\n      {\n        \"backupStatus\": \"successfulNoChanges\",\n        \"backupTimestamp\": \"1983-12-22T14:37:53.571Z\",\n        \"problemsCount\": 5918\n      },\n      {\n        \"backupStatus\": \"failed\",\n        \"backupTimestamp\": \"1958-08-11T21:11:37.532Z\",\n        \"problemsCount\": 4842\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "28e07869-7f36-4757-80a8-8a4daaa594e9",
+    "name": "Public Agents DomainsEntra API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

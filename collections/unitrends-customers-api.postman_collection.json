@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "8f737a8e-187a-4e8a-8795-94c68408c166",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0466024-1b5b-4b15-a54a-b0911f69a340",
+          "name": "Returns a list of customer details based on filtering, ordering and paging criteria.",
+          "request": {
+            "name": "Returns a list of customer details based on filtering, ordering and paging criteria.",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>",
+                  "description": "The id of the customer in the UUID format."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the customer."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c213eef3-d186-4ac2-a0da-d7d7b6fb0214",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "3958"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "3958"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "3958"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "3958"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"name\": \"John Doe\"\n  },\n  {\n    \"id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"name\": \"John Doe\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dbbb536b-2dd1-4fe1-ae12-a496076bf119",
+    "name": "Public Agents Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public Agents Appliances API",
+    "version": "public_api-v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appliances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of appliance details based on filtering, ordering and paging criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/v1/appliances",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the customer in UUID format."
+              },
+              {
+                "name": "asset_tag",
+                "value": "",
+                "type": "query",
+                "description": "The id of the appliance."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the appliance. All of the appliances that at least contain part of the passed parameter will be filtered."
+              },
+              {
+                "name": "is_online",
+                "value": "",
+                "type": "query",
+                "description": "Flag that indicates whether appliance is online. True means online."
+              },
+              {
+                "name": "total_mb_size_from",
+                "value": "",
+                "type": "query",
+                "description": "Minimum size of storage attached to the appliance in MB."
+              },
+              {
+                "name": "total_mb_size_to",
+                "value": "",
+                "type": "query",
+                "description": "Maximum size of storage attached to the appliance in MB."
+              },
+              {
+                "name": "total_mb_free_from",
+                "value": "",
+                "type": "query",
+                "description": "Minimum amount of free space on storage attached to the appliance in MB."
+              },
+              {
+                "name": "total_mb_free_to",
+                "value": "",
+                "type": "query",
+                "description": "Maximum amount of free space on storage attached to the appliance in MB."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The version of the appliance. All of the appliances that at least contain part of the passed parameter will be filtered."
+              },
+              {
+                "name": "helix_status",
+                "value": "",
+                "type": "query",
+                "description": "The status of helix for the appliances."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The ordering field."
+              },
+              {
+                "name": "order_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the order. E.g. \"asc\"."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Default is 1."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The page size. Default is 50."
+              }
+            ]
+          },
+          "docs": "Visibility is restricted by tenant which issued credentials for access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

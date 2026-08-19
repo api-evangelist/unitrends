@@ -2,11 +2,9 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/unitrends-public-api-openapi.json
-note: >-
-  No official hosted or published Unitrends MCP server was found (web search
-  2026-07-21). This is a candidate tool list derived from the UniView Portal
-  Public API operations; the spec publishes no operationIds, so tools are named
-  from tags and reference method + path.
+note: No official hosted or published Unitrends MCP server was found (web search 2026-07-21). This is
+  a candidate tool list derived from the UniView Portal Public API operations; the spec publishes no operationIds,
+  so tools are named from tags and reference method + path.
 server:
   name: unitrends
   transport: http
@@ -47,3 +45,9 @@ tools:
 - name: list_endpoint_assets
   description: List endpoint backup assets (license, storage used, OS, backup status).
   source_operation: openapi/unitrends-public-api-openapi.json#GET /api/epb/v1/assets
+deployment:
+  mode: none
+  verified: derived
+  tools: 12
+  checked: '2026-08-12'
+  source: catalog MCP census

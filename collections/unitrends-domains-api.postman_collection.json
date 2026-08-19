@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "aa575c6f-94ee-4bd2-9906-10f2fae2cf55",
+      "name": "Domains",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d966a7a5-68a9-417c-87ae-6f0a66e71e86",
+          "name": "Returns a list of spanning domains/tenants",
+          "request": {
+            "name": "Returns a list of spanning domains/tenants",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "spanning",
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_0]",
+                  "value": "<string>",
+                  "description": "This parameter allows to exclude the data from the response. To use it please add to the query parameters one or multiple of the following: \"?include[users]=false\""
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_1]",
+                  "value": "<string>",
+                  "description": "This parameter allows to exclude the data from the response. To use it please add to the query parameters one or multiple of the following: \"?include[users]=false\""
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_2]",
+                  "value": "<string>",
+                  "description": "This parameter allows to exclude the data from the response. To use it please add to the query parameters one or multiple of the following: \"?include[users]=false\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4083f3d-165e-4f8a-873f-c184de1a9209",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "spanning",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include[key_0]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[key_1]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "1244"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "1244"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "1244"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "1244"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"customerId\": \"701a0c8e-1855-1727-55cd-474e22ccac3f\",\n    \"name\": \"string\",\n    \"region\": \"string\",\n    \"numberOfUsers\": 6644,\n    \"numberOfLicensesTotal\": 5192,\n    \"numberOfLicensesInUse\": 1881,\n    \"expirationDate\": \"1989-06-09T23:50:22.617Z\",\n    \"storageInformation\": {\n      \"protectedBytes\": 121323231,\n      \"usedBytes\": 232323231\n    },\n    \"lastBackupStatus\": \"successfulNoChanges\",\n    \"lastBackupTimestamp\": \"1964-07-18T01:33:48.320Z\",\n    \"backupStatusLastSevenDaysTotal\": \"failed\",\n    \"backupStatusLastSevenDays\": {\n      \"totalForMail\": \"success\",\n      \"totalForContact\": \"failed\",\n      \"totalForCalendar\": \"partial\",\n      \"totalForDrive\": \"partial\",\n      \"totalForSharePoint\": \"success\",\n      \"totalForTeams\": \"failed\"\n    },\n    \"loginWithItComplete\": true,\n    \"errorOnlyEmail\": true,\n    \"numberOfProtectedUsers\": 123,\n    \"numberOfUnprotectedUsers\": 123,\n    \"numberOfProtectedSharePointSites\": 123,\n    \"numberOfUnprotectedSharePointSites\": 45,\n    \"numberOfProtectedTeamChannels\": 4,\n    \"numberOfUnprotectedTeamChannels\": 12,\n    \"users\": [\n      {\n        \"id\": \"string\",\n        \"email\": \"string\",\n        \"lastBackupStatusTotal\": \"successfulNoChanges\",\n        \"lastBackupTimestampTotal\": \"1981-03-02T14:35:16.146Z\",\n        \"lastBackupStatus\": {\n          \"lastForMail\": \"successfulNoChanges\",\n          \"lastForContact\": \"failed\",\n          \"lastForCalendar\": \"successfulNoChanges\",\n          \"lastForDrive\": \"successfulNoChanges\"\n        },\n        \"lastBackupTimestamp\": {\n          \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n        },\n        \"backupStatusLastSevenDaysTotal\": \"success\",\n        \"backupStatusLastSevenDays\": {\n          \"totalForMail\": \"failed\",\n          \"totalForContact\": \"failed\",\n          \"totalForCalendar\": \"failed\",\n          \"totalForDrive\": \"failed\"\n        },\n        \"storageInformation\": {\n          \"protectedBytes\": 121323231,\n          \"usedBytes\": 242424244,\n          \"protectedMailBytes\": 435353535,\n          \"usedMailBytes\": 23423535,\n          \"protectedOneDriveBytes\": 325235235,\n          \"usedOneDriveBytes\": 234234234,\n          \"protectedContactBytes\": 535325235,\n          \"usedContactBytes\": 2352352352,\n          \"protectedCalendarBytes\": 235235235,\n          \"usedCalendarBytes\": 662326326\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"email\": \"string\",\n        \"lastBackupStatusTotal\": \"successfulNoChanges\",\n        \"lastBackupTimestampTotal\": \"1996-05-26T09:32:25.197Z\",\n        \"lastBackupStatus\": {\n          \"lastForMail\": \"failed\",\n          \"lastForContact\": \"partial\",\n          \"lastForCalendar\": \"failed\",\n          \"lastForDrive\": \"success\"\n        },\n        \"lastBackupTimestamp\": {\n          \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n        },\n        \"backupStatusLastSevenDaysTotal\": \"failed\",\n        \"backupStatusLastSevenDays\": {\n          \"totalForMail\": \"success\",\n          \"totalForContact\": \"successfulNoChanges\",\n          \"totalForCalendar\": \"failed\",\n          \"totalForDrive\": \"partial\"\n        },\n        \"storageInformation\": {\n          \"protectedBytes\": 121323231,\n          \"usedBytes\": 242424244,\n          \"protectedMailBytes\": 435353535,\n          \"usedMailBytes\": 23423535,\n          \"protectedOneDriveBytes\": 325235235,\n          \"usedOneDriveBytes\": 234234234,\n          \"protectedContactBytes\": 535325235,\n          \"usedContactBytes\": 2352352352,\n          \"protectedCalendarBytes\": 235235235,\n          \"usedCalendarBytes\": 662326326\n        }\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"customerId\": \"936aea6f-828e-6ed7-c150-9f67d52d7dc4\",\n    \"name\": \"string\",\n    \"region\": \"string\",\n    \"numberOfUsers\": 2176,\n    \"numberOfLicensesTotal\": 7098,\n    \"numberOfLicensesInUse\": 3717,\n    \"expirationDate\": \"1999-01-23T06:54:49.324Z\",\n    \"storageInformation\": {\n      \"protectedBytes\": 121323231,\n      \"usedBytes\": 232323231\n    },\n    \"lastBackupStatus\": \"partial\",\n    \"lastBackupTimestamp\": \"2016-01-06T09:58:18.557Z\",\n    \"backupStatusLastSevenDaysTotal\": \"partial\",\n    \"backupStatusLastSevenDays\": {\n      \"totalForMail\": \"partial\",\n      \"totalForContact\": \"success\",\n      \"totalForCalendar\": \"partial\",\n      \"totalForDrive\": \"successfulNoChanges\",\n      \"totalForSharePoint\": \"partial\",\n      \"totalForTeams\": \"successfulNoChanges\"\n    },\n    \"loginWithItComplete\": true,\n    \"errorOnlyEmail\": true,\n    \"numberOfProtectedUsers\": 123,\n    \"numberOfUnprotectedUsers\": 123,\n    \"numberOfProtectedSharePointSites\": 123,\n    \"numberOfUnprotectedSharePointSites\": 45,\n    \"numberOfProtectedTeamChannels\": 4,\n    \"numberOfUnprotectedTeamChannels\": 12,\n    \"users\": [\n      {\n        \"id\": \"string\",\n        \"email\": \"string\",\n        \"lastBackupStatusTotal\": \"successfulNoChanges\",\n        \"lastBackupTimestampTotal\": \"1993-10-16T08:43:39.552Z\",\n        \"lastBackupStatus\": {\n          \"lastForMail\": \"successfulNoChanges\",\n          \"lastForContact\": \"partial\",\n          \"lastForCalendar\": \"partial\",\n          \"lastForDrive\": \"failed\"\n        },\n        \"lastBackupTimestamp\": {\n          \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n        },\n        \"backupStatusLastSevenDaysTotal\": \"failed\",\n        \"backupStatusLastSevenDays\": {\n          \"totalForMail\": \"failed\",\n          \"totalForContact\": \"successfulNoChanges\",\n          \"totalForCalendar\": \"success\",\n          \"totalForDrive\": \"successfulNoChanges\"\n        },\n        \"storageInformation\": {\n          \"protectedBytes\": 121323231,\n          \"usedBytes\": 242424244,\n          \"protectedMailBytes\": 435353535,\n          \"usedMailBytes\": 23423535,\n          \"protectedOneDriveBytes\": 325235235,\n          \"usedOneDriveBytes\": 234234234,\n          \"protectedContactBytes\": 535325235,\n          \"usedContactBytes\": 2352352352,\n          \"protectedCalendarBytes\": 235235235,\n          \"usedCalendarBytes\": 662326326\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"email\": \"string\",\n        \"lastBackupStatusTotal\": \"successfulNoChanges\",\n        \"lastBackupTimestampTotal\": \"2012-07-13T17:03:17.309Z\",\n        \"lastBackupStatus\": {\n          \"lastForMail\": \"success\",\n          \"lastForContact\": \"partial\",\n          \"lastForCalendar\": \"successfulNoChanges\",\n          \"lastForDrive\": \"successfulNoChanges\"\n        },\n        \"lastBackupTimestamp\": {\n          \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n          \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n        },\n        \"backupStatusLastSevenDaysTotal\": \"success\",\n        \"backupStatusLastSevenDays\": {\n          \"totalForMail\": \"failed\",\n          \"totalForContact\": \"success\",\n          \"totalForCalendar\": \"partial\",\n          \"totalForDrive\": \"successfulNoChanges\"\n        },\n        \"storageInformation\": {\n          \"protectedBytes\": 121323231,\n          \"usedBytes\": 242424244,\n          \"protectedMailBytes\": 435353535,\n          \"usedMailBytes\": 23423535,\n          \"protectedOneDriveBytes\": 325235235,\n          \"usedOneDriveBytes\": 234234234,\n          \"protectedContactBytes\": 535325235,\n          \"usedContactBytes\": 2352352352,\n          \"protectedCalendarBytes\": 235235235,\n          \"usedCalendarBytes\": 662326326\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf441760-07a9-4ef5-b125-fba6e4316170",
+    "name": "Public Agents Domains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

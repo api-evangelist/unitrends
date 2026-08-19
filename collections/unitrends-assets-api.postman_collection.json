@@ -1,0 +1,473 @@
+{
+  "item": [
+    {
+      "id": "7480d49c-a27a-49e2-b4f8-f99d9cee83f5",
+      "name": "Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "95e75e63-4b92-4369-b9ce-75d71c7a9556",
+          "name": "Returns a list of asset details based on filtering, ordering and paging criteria.",
+          "request": {
+            "name": "Returns a list of asset details based on filtering, ordering and paging criteria.",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<uuid>",
+                  "description": "The id of the customer in UUID format."
+                },
+                {
+                  "disabled": false,
+                  "key": "asset_tag",
+                  "value": "<string>",
+                  "description": "The id of the appliance."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the asset. All of the asset that contain passed parameter will be in filtered result."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "The ip of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "mac",
+                  "value": "<string>",
+                  "description": "The MAC address of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<uuid>",
+                  "description": "The unique identifier of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_0]",
+                  "value": "<string>",
+                  "description": "This parameter allows to include additional data to the response. To use it please add to the query parameters one or multiple of the following: \"?include[backups]=last&include[links]=all\""
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_1]",
+                  "value": "<string>",
+                  "description": "This parameter allows to include additional data to the response. To use it please add to the query parameters one or multiple of the following: \"?include[backups]=last&include[links]=all\""
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_2]",
+                  "value": "<string>",
+                  "description": "This parameter allows to include additional data to the response. To use it please add to the query parameters one or multiple of the following: \"?include[backups]=last&include[links]=all\""
+                },
+                {
+                  "disabled": false,
+                  "key": "include[key_3]",
+                  "value": "<string>",
+                  "description": "This parameter allows to include additional data to the response. To use it please add to the query parameters one or multiple of the following: \"?include[backups]=last&include[links]=all\""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9012d495-34d6-4d88-9525-4f95c56ec4f6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "asset_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mac",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include[key_0]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "424"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "424"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "424"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "424"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"asset_tag\": \"8008-100-70130\",\n    \"name\": \"Asset 1\",\n    \"type\": \"Image Level Instance\",\n    \"ip\": \"192.168.127.4\",\n    \"mac\": \"00:00:00:00:00:16\",\n    \"key\": \"9c07464f-482c-4296-b5f9-fb232016db90\",\n    \"last_backup\": {\n      \"start_time\": \"2020-02-28T13:27:15.200Z\",\n      \"complete_time\": \"2020-02-28T13:28:32.200Z\",\n      \"size\": 8060,\n      \"type\": \"Full\",\n      \"status\": \"Unknown\",\n      \"replication_status\": \"Failed\"\n    },\n    \"links\": [\n      {\n        \"rel\": \"WebInterface\",\n        \"href\": \"https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90\"\n      },\n      {\n        \"rel\": \"WebInterface\",\n        \"href\": \"https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90\"\n      }\n    ]\n  },\n  {\n    \"customer_id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"asset_tag\": \"8008-100-70130\",\n    \"name\": \"Asset 1\",\n    \"type\": \"Image Level Instance\",\n    \"ip\": \"192.168.127.4\",\n    \"mac\": \"00:00:00:00:00:16\",\n    \"key\": \"9c07464f-482c-4296-b5f9-fb232016db90\",\n    \"last_backup\": {\n      \"start_time\": \"2020-02-28T13:27:15.200Z\",\n      \"complete_time\": \"2020-02-28T13:28:32.200Z\",\n      \"size\": 8060,\n      \"type\": \"Full\",\n      \"status\": \"Successful\",\n      \"replication_status\": \"Failed\"\n    },\n    \"links\": [\n      {\n        \"rel\": \"WebInterface\",\n        \"href\": \"https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90\"\n      },\n      {\n        \"rel\": \"WebInterface\",\n        \"href\": \"https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7e11636-80fa-4a86-9500-bf3f8003079f",
+          "name": "Returns a list of asset details based on filtering, ordering and paging criteria.",
+          "request": {
+            "name": "Returns a list of asset details based on filtering, ordering and paging criteria.",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "epb",
+                "v1",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "The id of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<uuid>",
+                  "description": "The id of the customer in UUID format."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28d9b8ff-64a6-4c58-8c25-3d4971c046fc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "epb",
+                    "v1",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "424"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "424"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "424"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "424"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"APPLONE\",\n    \"name\": \"Laptop One\",\n    \"licenseType\": \"string\",\n    \"customerName\": \"string\",\n    \"customerId\": \"c879b753-49b3-e8ab-ecbd-0c8a87b7ee27\",\n    \"policyId\": \"a0899ddd-9400-828e-dd7d-a3e8cc97b336\",\n    \"storageUsedBytes\": 4087,\n    \"status\": \"string\",\n    \"os\": \"string\",\n    \"backupEnabled\": true,\n    \"hasCustomerManagedKey\": true,\n    \"mac\": \"string\",\n    \"timeZoneOffsetMinutes\": 3129,\n    \"createdTimestamp\": \"2016-09-21T07:16:27.948Z\",\n    \"lastSuccessfulBackupTimestamp\": \"2017-03-10T22:48:13.050Z\",\n    \"lastOnlineTimestamp\": \"2017-01-31T05:06:02.247Z\"\n  },\n  {\n    \"id\": \"APPLONE\",\n    \"name\": \"Laptop One\",\n    \"licenseType\": \"string\",\n    \"customerName\": \"string\",\n    \"customerId\": \"dac8eab1-89b7-8133-4d6e-5ef4ad9abc54\",\n    \"policyId\": \"4eb61a92-8a34-154c-7568-a8bf1cb852e1\",\n    \"storageUsedBytes\": 1024,\n    \"status\": \"string\",\n    \"os\": \"string\",\n    \"backupEnabled\": false,\n    \"hasCustomerManagedKey\": false,\n    \"mac\": \"string\",\n    \"timeZoneOffsetMinutes\": 2917,\n    \"createdTimestamp\": \"2023-06-06T21:36:06.213Z\",\n    \"lastSuccessfulBackupTimestamp\": \"1995-10-23T05:42:00.337Z\",\n    \"lastOnlineTimestamp\": \"1978-07-18T00:49:51.493Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c457cbc6-d5d4-44cc-b90f-14e49306c0c1",
+    "name": "Public Agents Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

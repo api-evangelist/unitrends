@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "id": "5b05a3a1-40cf-426d-97fd-abc9fa9cf411",
+      "name": "Agents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed7914b2-7f80-4442-a23c-ec416768df28",
+          "name": "Returns the version of the latest agent and the link to download it.",
+          "request": {
+            "name": "Returns the version of the latest agent and the link to download it.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "agents",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ea2d652-e548-4326-aa52-08481dbc4919",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "agents",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"3.0.19\",\n  \"downloadLocation\": \"https://download.backup.net/3.0.19/appliance-agent.tar.gz\",\n  \"checksum\": \"61c7bb1f1d41f2445061f2b3889e15d32fb3062126073104389db5a07be8a4e9\",\n  \"checksumAlgorithm\": \"SHA256\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5e751d80-9cd2-422f-8a57-b2103681d0b7",
+    "name": "Public Agents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

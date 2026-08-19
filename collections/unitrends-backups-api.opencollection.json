@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public Agents Backups API",
+    "version": "public_api-v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Backups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of backup details based on filtering, ordering and paging criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/v1/backups",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the customer in UUID format."
+              },
+              {
+                "name": "asset_tag",
+                "value": "",
+                "type": "query",
+                "description": "The id of the appliance."
+              },
+              {
+                "name": "start_time_from",
+                "value": "",
+                "type": "query",
+                "description": "Minimum backup start time."
+              },
+              {
+                "name": "start_time_to",
+                "value": "",
+                "type": "query",
+                "description": "Maximum backup start time."
+              },
+              {
+                "name": "complete_time_from",
+                "value": "",
+                "type": "query",
+                "description": "Minimum backup completion time."
+              },
+              {
+                "name": "complete_time_to",
+                "value": "",
+                "type": "query",
+                "description": "Maximum backup completion time."
+              },
+              {
+                "name": "size_from",
+                "value": "",
+                "type": "query",
+                "description": "Minimum backup size in MB."
+              },
+              {
+                "name": "size_to",
+                "value": "",
+                "type": "query",
+                "description": "Maximum backup size in MB."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the backup."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the backup."
+              },
+              {
+                "name": "replication_status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the replication."
+              },
+              {
+                "name": "asset_key",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the asset."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The ordering field."
+              },
+              {
+                "name": "order_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the order. E.g. \"asc\"."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Default is 1."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The page size. Default is 50."
+              }
+            ]
+          },
+          "docs": "Visibility is restricted by tenant which issued credentials for access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

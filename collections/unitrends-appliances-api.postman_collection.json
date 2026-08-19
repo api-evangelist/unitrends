@@ -1,0 +1,295 @@
+{
+  "item": [
+    {
+      "id": "dd5496a1-5e71-40b4-bdc5-38302d5c0e95",
+      "name": "Appliances",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cae2e42d-697a-4df9-b2a6-654fa0767b55",
+          "name": "Returns a list of appliance details based on filtering, ordering and paging criteria.",
+          "request": {
+            "name": "Returns a list of appliance details based on filtering, ordering and paging criteria.",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "appliances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<uuid>",
+                  "description": "The id of the customer in UUID format."
+                },
+                {
+                  "disabled": false,
+                  "key": "asset_tag",
+                  "value": "<string>",
+                  "description": "The id of the appliance."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The name of the appliance. All of the appliances that at least contain part of the passed parameter will be filtered."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_online",
+                  "value": "<boolean>",
+                  "description": "Flag that indicates whether appliance is online. True means online."
+                },
+                {
+                  "disabled": false,
+                  "key": "total_mb_size_from",
+                  "value": "<long>",
+                  "description": "Minimum size of storage attached to the appliance in MB."
+                },
+                {
+                  "disabled": false,
+                  "key": "total_mb_size_to",
+                  "value": "<long>",
+                  "description": "Maximum size of storage attached to the appliance in MB."
+                },
+                {
+                  "disabled": false,
+                  "key": "total_mb_free_from",
+                  "value": "<long>",
+                  "description": "Minimum amount of free space on storage attached to the appliance in MB."
+                },
+                {
+                  "disabled": false,
+                  "key": "total_mb_free_to",
+                  "value": "<long>",
+                  "description": "Maximum amount of free space on storage attached to the appliance in MB."
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "The version of the appliance. All of the appliances that at least contain part of the passed parameter will be filtered."
+                },
+                {
+                  "disabled": false,
+                  "key": "helix_status",
+                  "value": "<string>",
+                  "description": "The status of helix for the appliances."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "097c47a1-7376-409e-a8fd-0076c84d98a2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "appliances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "asset_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_online",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "total_mb_size_from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "total_mb_size_to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "total_mb_free_from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "total_mb_free_to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "helix_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "1528"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "1528"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "1528"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "1528"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"asset_tag\": \"8008-100-70130\",\n    \"name\": \"Appliance 1\",\n    \"is_online\": true,\n    \"total_mb_size\": 86203240,\n    \"total_mb_free\": 862032,\n    \"version\": \"10.4.7-1.202007131947.CentOS6\",\n    \"helix_status\": \"<string>\"\n  },\n  {\n    \"customer_id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"asset_tag\": \"8008-100-70130\",\n    \"name\": \"Appliance 1\",\n    \"is_online\": true,\n    \"total_mb_size\": 86203240,\n    \"total_mb_free\": 862032,\n    \"version\": \"10.4.7-1.202007131947.CentOS6\",\n    \"helix_status\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2817f693-d9c6-4816-82f6-be487573403e",
+    "name": "Public Agents Appliances API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

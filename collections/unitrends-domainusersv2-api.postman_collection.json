@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "12b36683-4101-42f7-8b29-5be2b1e9a62b",
+      "name": "DomainUsersV2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "98a2f7bc-5792-420b-8b63-574a8b4c2341",
+          "name": "Returns a list of spanning domain/tenant users",
+          "request": {
+            "name": "Returns a list of spanning domain/tenant users",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "spanning",
+                "domains",
+                ":domainId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cbe9398-7364-4a91-815a-17fcbde119ec",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "spanning",
+                    "domains",
+                    ":domainId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "4769"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "4769"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "4769"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "4769"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"id\": \"string\",\n      \"email\": \"string\",\n      \"lastBackupStatusTotal\": \"successfulNoChanges\",\n      \"lastBackupTimestampTotal\": \"1994-05-30T16:49:13.427Z\",\n      \"lastBackupStatus\": {\n        \"lastForMail\": \"success\",\n        \"lastForContact\": \"failed\",\n        \"lastForCalendar\": \"partial\",\n        \"lastForDrive\": \"partial\"\n      },\n      \"lastBackupTimestamp\": {\n        \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n      },\n      \"backupStatusLastSevenDaysTotal\": \"failed\",\n      \"backupStatusLastSevenDays\": {\n        \"totalForMail\": \"success\",\n        \"totalForContact\": \"success\",\n        \"totalForCalendar\": \"partial\",\n        \"totalForDrive\": \"success\"\n      },\n      \"storageInformation\": {\n        \"protectedBytes\": 121323231,\n        \"usedBytes\": 242424244,\n        \"protectedMailBytes\": 435353535,\n        \"usedMailBytes\": 23423535,\n        \"protectedDriveBytes\": 325235235,\n        \"usedDriveBytes\": 234234234,\n        \"protectedContactBytes\": 535325235,\n        \"usedContactBytes\": 2352352352,\n        \"protectedCalendarBytes\": 235235235,\n        \"usedCalendarBytes\": 662326326\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"email\": \"string\",\n      \"lastBackupStatusTotal\": \"partial\",\n      \"lastBackupTimestampTotal\": \"1949-02-11T22:30:32.149Z\",\n      \"lastBackupStatus\": {\n        \"lastForMail\": \"partial\",\n        \"lastForContact\": \"failed\",\n        \"lastForCalendar\": \"failed\",\n        \"lastForDrive\": \"failed\"\n      },\n      \"lastBackupTimestamp\": {\n        \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n      },\n      \"backupStatusLastSevenDaysTotal\": \"success\",\n      \"backupStatusLastSevenDays\": {\n        \"totalForMail\": \"successfulNoChanges\",\n        \"totalForContact\": \"successfulNoChanges\",\n        \"totalForCalendar\": \"successfulNoChanges\",\n        \"totalForDrive\": \"failed\"\n      },\n      \"storageInformation\": {\n        \"protectedBytes\": 121323231,\n        \"usedBytes\": 242424244,\n        \"protectedMailBytes\": 435353535,\n        \"usedMailBytes\": 23423535,\n        \"protectedDriveBytes\": 325235235,\n        \"usedDriveBytes\": 234234234,\n        \"protectedContactBytes\": 535325235,\n        \"usedContactBytes\": 2352352352,\n        \"protectedCalendarBytes\": 235235235,\n        \"usedCalendarBytes\": 662326326\n      }\n    }\n  ],\n  \"archivedUsers\": [\n    {\n      \"id\": \"string\",\n      \"email\": \"string\",\n      \"lastBackupStatusTotal\": \"partial\",\n      \"lastBackupTimestampTotal\": \"1985-11-18T19:35:50.693Z\",\n      \"lastBackupStatus\": {\n        \"lastForMail\": \"failed\",\n        \"lastForContact\": \"successfulNoChanges\",\n        \"lastForCalendar\": \"success\",\n        \"lastForDrive\": \"failed\"\n      },\n      \"lastBackupTimestamp\": {\n        \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n      },\n      \"backupStatusLastSevenDaysTotal\": \"partial\",\n      \"backupStatusLastSevenDays\": {\n        \"totalForMail\": \"partial\",\n        \"totalForContact\": \"success\",\n        \"totalForCalendar\": \"success\",\n        \"totalForDrive\": \"partial\"\n      },\n      \"storageInformation\": {\n        \"protectedBytes\": 121323231,\n        \"usedBytes\": 242424244,\n        \"protectedMailBytes\": 435353535,\n        \"usedMailBytes\": 23423535,\n        \"protectedDriveBytes\": 325235235,\n        \"usedDriveBytes\": 234234234,\n        \"protectedContactBytes\": 535325235,\n        \"usedContactBytes\": 2352352352,\n        \"protectedCalendarBytes\": 235235235,\n        \"usedCalendarBytes\": 662326326\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"email\": \"string\",\n      \"lastBackupStatusTotal\": \"success\",\n      \"lastBackupTimestampTotal\": \"1982-10-19T23:07:37.301Z\",\n      \"lastBackupStatus\": {\n        \"lastForMail\": \"success\",\n        \"lastForContact\": \"partial\",\n        \"lastForCalendar\": \"failed\",\n        \"lastForDrive\": \"failed\"\n      },\n      \"lastBackupTimestamp\": {\n        \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n        \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n      },\n      \"backupStatusLastSevenDaysTotal\": \"successfulNoChanges\",\n      \"backupStatusLastSevenDays\": {\n        \"totalForMail\": \"failed\",\n        \"totalForContact\": \"successfulNoChanges\",\n        \"totalForCalendar\": \"failed\",\n        \"totalForDrive\": \"success\"\n      },\n      \"storageInformation\": {\n        \"protectedBytes\": 121323231,\n        \"usedBytes\": 242424244,\n        \"protectedMailBytes\": 435353535,\n        \"usedMailBytes\": 23423535,\n        \"protectedDriveBytes\": 325235235,\n        \"usedDriveBytes\": 234234234,\n        \"protectedContactBytes\": 535325235,\n        \"usedContactBytes\": 2352352352,\n        \"protectedCalendarBytes\": 235235235,\n        \"usedCalendarBytes\": 662326326\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c23b297d-a5d3-4f8d-ab35-f2b8be8c23b6",
+    "name": "Public Agents DomainUsersV2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

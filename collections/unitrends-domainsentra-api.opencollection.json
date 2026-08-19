@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public Agents DomainsEntra API",
+    "version": "public_api-v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DomainsEntra",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of Microsoft Entra ID domains/tenants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/v1/entra/domains",
+            "params": [
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The ordering field."
+              },
+              {
+                "name": "order_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the order. E.g. \"asc\"."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Default is 1."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The page size. Default is 50."
+              }
+            ]
+          },
+          "docs": "Visibility is restricted by tenant which issued credentials for access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

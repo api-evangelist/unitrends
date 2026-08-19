@@ -1,0 +1,315 @@
+{
+  "item": [
+    {
+      "id": "e1f953ea-f37d-4247-a648-c32dd749a38e",
+      "name": "Backups",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b7a3464-dee3-4c28-b439-3b2859b25d21",
+          "name": "Returns a list of backup details based on filtering, ordering and paging criteria.",
+          "request": {
+            "name": "Returns a list of backup details based on filtering, ordering and paging criteria.",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "backups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customer_id",
+                  "value": "<uuid>",
+                  "description": "The id of the customer in UUID format."
+                },
+                {
+                  "disabled": false,
+                  "key": "asset_tag",
+                  "value": "<string>",
+                  "description": "The id of the appliance."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time_from",
+                  "value": "<dateTime>",
+                  "description": "Minimum backup start time."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time_to",
+                  "value": "<dateTime>",
+                  "description": "Maximum backup start time."
+                },
+                {
+                  "disabled": false,
+                  "key": "complete_time_from",
+                  "value": "<dateTime>",
+                  "description": "Minimum backup completion time."
+                },
+                {
+                  "disabled": false,
+                  "key": "complete_time_to",
+                  "value": "<dateTime>",
+                  "description": "Maximum backup completion time."
+                },
+                {
+                  "disabled": false,
+                  "key": "size_from",
+                  "value": "<long>",
+                  "description": "Minimum backup size in MB."
+                },
+                {
+                  "disabled": false,
+                  "key": "size_to",
+                  "value": "<long>",
+                  "description": "Maximum backup size in MB."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "The type of the backup."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "The status of the backup."
+                },
+                {
+                  "disabled": false,
+                  "key": "replication_status",
+                  "value": "<string>",
+                  "description": "The status of the replication."
+                },
+                {
+                  "disabled": false,
+                  "key": "asset_key",
+                  "value": "<uuid>",
+                  "description": "The unique identifier of the asset."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "The ordering field."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_direction",
+                  "value": "<string>",
+                  "description": "Direction of the order. E.g. \"asc\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f596db42-aecc-4edd-a3ae-b3f9a4bac6ca",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "backups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "asset_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_time_from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "start_time_to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "complete_time_from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "complete_time_to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "size_from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "size_to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "replication_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asset_key",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "3674"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "3674"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "3674"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "3674"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"customer_id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"asset_tag\": \"8008-100-70130\",\n    \"start_time\": \"2020-02-28T13:27:15.200Z\",\n    \"complete_time\": \"2020-02-28T13:28:32.200Z\",\n    \"size\": 8060,\n    \"type\": \"Full\",\n    \"status\": \"<string>\",\n    \"replication_status\": \"<string>\",\n    \"asset_key\": \"9c07464f-482c-4296-b5f9-fb232016db90\"\n  },\n  {\n    \"customer_id\": \"d28a556c-d8de-48f9-8a64-90fdf03ec4d0\",\n    \"asset_tag\": \"8008-100-70130\",\n    \"start_time\": \"2020-02-28T13:27:15.200Z\",\n    \"complete_time\": \"2020-02-28T13:28:32.200Z\",\n    \"size\": 8060,\n    \"type\": \"Full\",\n    \"status\": \"<string>\",\n    \"replication_status\": \"<string>\",\n    \"asset_key\": \"9c07464f-482c-4296-b5f9-fb232016db90\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aa65f2bf-32de-4b06-96b7-e2f163587bc2",
+    "name": "Public Agents Backups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

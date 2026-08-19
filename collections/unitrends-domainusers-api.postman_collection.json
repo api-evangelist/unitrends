@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "dfa5c6ad-230b-4716-adc1-6f72e3c0a1ba",
+      "name": "DomainUsers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f187a88-0b2f-4c5d-933b-c1a13072ff63",
+          "name": "Returns a list of spanning domain/tenant users",
+          "request": {
+            "name": "Returns a list of spanning domain/tenant users",
+            "description": {
+              "content": "Visibility is restricted by tenant which issued credentials for access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "spanning",
+                "domains",
+                ":domainId",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "The page number. Default is 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The page size. Default is 50."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domainId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c265c232-db94-4b1e-8703-48a1fd15368f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "spanning",
+                    "domains",
+                    ":domainId",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domainId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Current page size.",
+                  "key": "Paging-Page-Size",
+                  "value": "1333"
+                },
+                {
+                  "disabled": false,
+                  "description": "Current page number.",
+                  "key": "Paging-Page-Number",
+                  "value": "1333"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total amount of records.",
+                  "key": "Paging-Total-Records",
+                  "value": "1333"
+                },
+                {
+                  "disabled": false,
+                  "description": "Total count of pages.",
+                  "key": "Paging-Total-Pages",
+                  "value": "1333"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"email\": \"string\",\n    \"lastBackupStatusTotal\": \"partial\",\n    \"lastBackupTimestampTotal\": \"1958-05-19T20:05:27.505Z\",\n    \"lastBackupStatus\": {\n      \"lastForMail\": \"failed\",\n      \"lastForContact\": \"success\",\n      \"lastForCalendar\": \"success\",\n      \"lastForDrive\": \"successfulNoChanges\"\n    },\n    \"lastBackupTimestamp\": {\n      \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n      \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n      \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n      \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n    },\n    \"backupStatusLastSevenDaysTotal\": \"successfulNoChanges\",\n    \"backupStatusLastSevenDays\": {\n      \"totalForMail\": \"success\",\n      \"totalForContact\": \"partial\",\n      \"totalForCalendar\": \"partial\",\n      \"totalForDrive\": \"success\"\n    },\n    \"storageInformation\": {\n      \"protectedBytes\": 121323231,\n      \"usedBytes\": 242424244,\n      \"protectedMailBytes\": 435353535,\n      \"usedMailBytes\": 23423535,\n      \"protectedOneDriveBytes\": 325235235,\n      \"usedOneDriveBytes\": 234234234,\n      \"protectedContactBytes\": 535325235,\n      \"usedContactBytes\": 2352352352,\n      \"protectedCalendarBytes\": 235235235,\n      \"usedCalendarBytes\": 662326326\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"email\": \"string\",\n    \"lastBackupStatusTotal\": \"partial\",\n    \"lastBackupTimestampTotal\": \"1960-04-19T13:13:31.596Z\",\n    \"lastBackupStatus\": {\n      \"lastForMail\": \"successfulNoChanges\",\n      \"lastForContact\": \"failed\",\n      \"lastForCalendar\": \"successfulNoChanges\",\n      \"lastForDrive\": \"success\"\n    },\n    \"lastBackupTimestamp\": {\n      \"lastMailBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n      \"lastContactBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n      \"lastCalendarBackupTimestamp\": \"2022-07-26T09:21:40Z\",\n      \"lastDriveBackupTimestamp\": \"2022-07-26T09:21:40Z\"\n    },\n    \"backupStatusLastSevenDaysTotal\": \"successfulNoChanges\",\n    \"backupStatusLastSevenDays\": {\n      \"totalForMail\": \"partial\",\n      \"totalForContact\": \"successfulNoChanges\",\n      \"totalForCalendar\": \"success\",\n      \"totalForDrive\": \"partial\"\n    },\n    \"storageInformation\": {\n      \"protectedBytes\": 121323231,\n      \"usedBytes\": 242424244,\n      \"protectedMailBytes\": 435353535,\n      \"usedMailBytes\": 23423535,\n      \"protectedOneDriveBytes\": 325235235,\n      \"usedOneDriveBytes\": 234234234,\n      \"protectedContactBytes\": 535325235,\n      \"usedContactBytes\": 2352352352,\n      \"protectedCalendarBytes\": 235235235,\n      \"usedCalendarBytes\": 662326326\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://public-api.backup.net",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cfa8eab4-5b16-469a-b9b2-77d444ff21e0",
+    "name": "Public Agents DomainUsers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Description of Public API for Unitrends MSP.",
+      "type": "text/plain"
+    }
+  }
+}

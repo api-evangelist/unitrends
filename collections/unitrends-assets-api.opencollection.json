@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public Agents Assets API",
+    "version": "public_api-v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of asset details based on filtering, ordering and paging criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/v1/assets",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the customer in UUID format."
+              },
+              {
+                "name": "asset_tag",
+                "value": "",
+                "type": "query",
+                "description": "The id of the appliance."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the asset. All of the asset that contain passed parameter will be in filtered result."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the asset."
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "The ip of the asset."
+              },
+              {
+                "name": "mac",
+                "value": "",
+                "type": "query",
+                "description": "The MAC address of the asset."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the asset."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The ordering field."
+              },
+              {
+                "name": "order_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the order. E.g. \"asc\"."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Default is 1."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The page size. Default is 50."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "This parameter allows to include additional data to the response. To use it please add to the query parameters one or multiple of the following: \"?include[backups]=last&include[links]=all\""
+              }
+            ]
+          },
+          "docs": "Visibility is restricted by tenant which issued credentials for access."
+        },
+        {
+          "info": {
+            "name": "Returns a list of asset details based on filtering, ordering and paging criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/api/epb/v1/assets",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the asset."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the asset."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the customer in UUID format."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The ordering field."
+              },
+              {
+                "name": "order_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the order. E.g. \"asc\"."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Default is 1."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The page size. Default is 50."
+              }
+            ]
+          },
+          "docs": "Visibility is restricted by tenant which issued credentials for access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

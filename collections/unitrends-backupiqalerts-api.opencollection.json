@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Public Agents BackupIqAlerts API",
+    "version": "public_api-v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BackupIqAlerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of BackupIQ alerts based on filtering, ordering and paging criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.backup.net/v1/backupiq/alerts",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the alert."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "The severity of the alert."
+              },
+              {
+                "name": "is_muted",
+                "value": "",
+                "type": "query",
+                "description": "Indicates that alert is muted on UI by settings of alerts specified on the portal.\r\nMuted alerts are not displayed on the portal UI.\r\nAPI returns not muted alerts by default."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "The id of the customer in UUID format."
+              },
+              {
+                "name": "customer_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the customer. All of the customers that contain passed parameter will be in filtered result."
+              },
+              {
+                "name": "asset_tag",
+                "value": "",
+                "type": "query",
+                "description": "The id of the appliance."
+              },
+              {
+                "name": "appliance_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the appliance. All of the appliances that contain passed parameter will be in filtered result."
+              },
+              {
+                "name": "asset_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the asset. All of the asset that contain passed parameter will be in filtered result."
+              },
+              {
+                "name": "asset_key",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the asset."
+              },
+              {
+                "name": "job_name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the job. All of the jobs that contain passed parameter will be in filtered result."
+              },
+              {
+                "name": "job_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the job. All of the jobs that contain passed parameter will be in filtered result."
+              },
+              {
+                "name": "is_dismissed",
+                "value": "",
+                "type": "query",
+                "description": "Flag that indicates dismiss status of an alert. It means whether a user dismissed an alert in BackupIQ interface.\r\nThe absence of the parameter leads to both dismissed and not dismissed alerts in the filtered result."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "The ordering field."
+              },
+              {
+                "name": "order_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of the order. E.g. \"asc\", \"desc\"."
+              },
+              {
+                "name": "created_time_direction",
+                "value": "",
+                "type": "query",
+                "description": "Direction of ordering by created_time field, which always the second ordering field. E.g. \"asc\", \"desc\"."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "The page number. Default is 1."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The page size. Default is 50."
+              }
+            ]
+          },
+          "docs": "Visibility is restricted by tenant which issued credentials for access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
