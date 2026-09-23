@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Public Agents Customers API
+  title: Public Customers API
   description: Description of Public API for Unitrends MSP.
   version: public_api-v1
 servers:
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - Customers
-      summary: Returns a list of customer details based on filtering, ordering and paging criteria.
+      summary: Returns a list of customer details based on filtering, ordering and paging…
       description: Visibility is restricted by tenant which issued credentials for access.
       parameters:
       - name: id
@@ -80,6 +80,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersResponse'
+      operationId: getV1Customers
+      x-operation-id-source: derived
 components:
   schemas:
     MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersResponse:
@@ -91,9 +93,10 @@ components:
           format: uuid
           example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The name of the customer.
-          nullable: true
           example: John Doe
       additionalProperties: false
     MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersRequestOrderColumn:

@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Public Agents Backups API
+  title: Public Backups API
   description: Description of Public API for Unitrends MSP.
   version: public_api-v1
 servers:
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - Backups
-      summary: Returns a list of backup details based on filtering, ordering and paging criteria.
+      summary: Returns a list of backup details based on filtering, ordering and paging…
       description: Visibility is restricted by tenant which issued credentials for access.
       parameters:
       - name: customer_id
@@ -137,8 +137,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsResponse'
+      operationId: getV1Backups
+      x-operation-id-source: derived
 components:
   schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
+      enum:
+      - Successful
+      - Failed
+      - Unknown
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsResponse:
       type: object
       properties:
@@ -148,9 +156,10 @@ components:
           format: uuid
           example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
         asset_tag:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The id of the appliance.
-          nullable: true
           example: 8008-100-70130
         start_time:
           type: string
@@ -158,10 +167,11 @@ components:
           format: date-time
           example: '2020-02-28T13:27:15.200Z'
         complete_time:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The backup completion time.
           format: date-time
-          nullable: true
           example: '2020-02-28T13:28:32.200Z'
         size:
           type: integer
@@ -169,9 +179,10 @@ components:
           format: int64
           example: 8060
         type:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The type of the backup.
-          nullable: true
           example: Full
         status:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
@@ -201,12 +212,6 @@ components:
       - Warning
       - Failed
       - InProgress
-      - Unknown
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
-      enum:
-      - Successful
-      - Failed
       - Unknown
       type: string
   securitySchemes:

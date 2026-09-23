@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Public Agents DomainUsersV2 API
+  title: Public Domain Users V2 API
   description: Description of Public API for Unitrends MSP.
   version: public_api-v1
 servers:
@@ -62,36 +62,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.GetReturnUserModelV2'
+      operationId: getV2SpanningDomainsByDomainIdUsers
+      x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel:
-      type: object
-      properties:
-        lastMailBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for mail
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-        lastContactBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for contact
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-        lastCalendarBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for calendar
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-        lastDriveBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for drive
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
+      enum:
+      - success
+      - partial
+      - failed
+      - successfulNoChanges
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel:
       type: object
       properties:
@@ -104,31 +85,149 @@ components:
         lastForDrive:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
-      enum:
-      - success
-      - partial
-      - failed
-      - successfulNoChanges
-      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserStorageInformationModelV2:
+      type: object
+      properties:
+        protectedBytes:
+          type:
+          - integer
+          - 'null'
+          description: Total protected  (number in bytes)
+          format: int64
+          example: 121323231
+        usedBytes:
+          type:
+          - integer
+          - 'null'
+          description: Total stored (number in bytes)
+          format: int64
+          example: 242424244
+        protectedMailBytes:
+          type:
+          - integer
+          - 'null'
+          description: Mail protected (number in bytes)
+          format: int64
+          example: 435353535
+        usedMailBytes:
+          type:
+          - integer
+          - 'null'
+          description: Mail stored (number in bytes)
+          format: int64
+          example: 23423535
+        protectedDriveBytes:
+          type:
+          - integer
+          - 'null'
+          description: Drive protected (number in bytes)
+          format: int64
+          example: 325235235
+        usedDriveBytes:
+          type:
+          - integer
+          - 'null'
+          description: Drive stored (number in bytes)
+          format: int64
+          example: 234234234
+        protectedContactBytes:
+          type:
+          - integer
+          - 'null'
+          description: Contact protected (number in bytes)
+          format: int64
+          example: 535325235
+        usedContactBytes:
+          type:
+          - integer
+          - 'null'
+          description: Contact stored (number in bytes)
+          format: int64
+          example: 2352352352
+        protectedCalendarBytes:
+          type:
+          - integer
+          - 'null'
+          description: Calendar protected (number in bytes)
+          format: int64
+          example: 235235235
+        usedCalendarBytes:
+          type:
+          - integer
+          - 'null'
+          description: Calendar stored (number in bytes)
+          format: int64
+          example: 662326326
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.GetReturnUserModelV2:
+      type: object
+      properties:
+        users:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserModelV2'
+        archivedUsers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserModelV2'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel:
+      type: object
+      properties:
+        lastMailBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for mail
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+        lastContactBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for contact
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+        lastCalendarBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for calendar
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+        lastDriveBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for drive
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+      additionalProperties: false
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserModelV2:
       type: object
       properties:
         id:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User unique identifier
-          nullable: true
         email:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User email
-          nullable: true
         lastBackupStatusTotal:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
         lastBackupTimestampTotal:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Total last backup timestamp
           format: date-time
-          nullable: true
         lastBackupStatus:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel'
         lastBackupTimestamp:
@@ -151,84 +250,6 @@ components:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
         totalForDrive:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.GetReturnUserModelV2:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserModelV2'
-          nullable: true
-        archivedUsers:
-          type: array
-          items:
-            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserModelV2'
-          nullable: true
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.V2.UserStorageInformationModelV2:
-      type: object
-      properties:
-        protectedBytes:
-          type: integer
-          description: Total protected  (number in bytes)
-          format: int64
-          nullable: true
-          example: 121323231
-        usedBytes:
-          type: integer
-          description: Total stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 242424244
-        protectedMailBytes:
-          type: integer
-          description: Mail protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 435353535
-        usedMailBytes:
-          type: integer
-          description: Mail stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 23423535
-        protectedDriveBytes:
-          type: integer
-          description: Drive protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 325235235
-        usedDriveBytes:
-          type: integer
-          description: Drive stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 234234234
-        protectedContactBytes:
-          type: integer
-          description: Contact protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 535325235
-        usedContactBytes:
-          type: integer
-          description: Contact stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 2352352352
-        protectedCalendarBytes:
-          type: integer
-          description: Calendar protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 235235235
-        usedCalendarBytes:
-          type: integer
-          description: Calendar stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 662326326
       additionalProperties: false
   securitySchemes:
     Bearer:

@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Public Agents Appliances API
+  title: Public Appliances API
   description: Description of Public API for Unitrends MSP.
   version: public_api-v1
 servers:
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - Appliances
-      summary: Returns a list of appliance details based on filtering, ordering and paging criteria.
+      summary: Returns a list of appliance details based on filtering, ordering and paging…
       description: Visibility is restricted by tenant which issued credentials for access.
       parameters:
       - name: customer_id
@@ -124,15 +124,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesResponse'
+      operationId: getV1Appliances
+      x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus:
-      enum:
-      - None
-      - Agent
-      - AutoUpdate
-      - Unknown
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesResponse:
       type: object
       properties:
@@ -142,14 +137,16 @@ components:
           format: uuid
           example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
         asset_tag:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The id of the appliance.
-          nullable: true
           example: 8008-100-70130
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The name of the appliance.
-          nullable: true
           example: Appliance 1
         is_online:
           type: boolean
@@ -166,13 +163,21 @@ components:
           format: int64
           example: 862032
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: The version of the appliance.
-          nullable: true
           example: 10.4.7-1.202007131947.CentOS6
         helix_status:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus'
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus:
+      enum:
+      - None
+      - Agent
+      - AutoUpdate
+      - Unknown
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesRequestOrderColumn:
       enum:
       - asset_tag

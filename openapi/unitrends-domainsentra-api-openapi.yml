@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Public Agents DomainsEntra API
+  title: Public Domains Entra API
   description: Description of Public API for Unitrends MSP.
   version: public_api-v1
 servers:
@@ -69,81 +69,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel'
+      operationId: getV1EntraDomains
+      x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel:
-      type: object
-      properties:
-        msId:
-          type: string
-          description: Microsoft Entra ID domain id
-          nullable: true
-        name:
-          type: string
-          description: Name of the domain
-          nullable: true
-        internalId:
-          type: string
-          description: UniView Domain id
-          nullable: true
-        region:
-          type: string
-          description: Region of the domain
-          nullable: true
-        licenseSubtype:
-          type: string
-          description: License type
-          nullable: true
-        mappedCustomerId:
-          type: string
-          description: Mapped customer UniView id
-          format: uuid
-          nullable: true
-        mappedCustomerName:
-          type: string
-          description: Mapped customer UniView name
-          nullable: true
-        numberOfSeats:
-          type: integer
-          description: Number of seats used
-          format: int32
-          nullable: true
-        numberOfUsedLicenses:
-          type: integer
-          description: Number of licenses used
-          format: int32
-          nullable: true
-        assignedLicenses:
-          type: integer
-          description: Number of licenses assigned to the domain
-          format: int32
-          nullable: true
-        expirationDate:
-          type: string
-          description: Domain expiration date
-          format: date-time
-          nullable: true
-        backupStatusForLast7Days:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        last30Backups:
-          type: array
-          items:
-            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel'
-          description: List of last 30 backups
-          nullable: true
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
-      enum:
-      - success
-      - partial
-      - failed
-      - successfulNoChanges
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
-      enum:
-      - name
-      - mapped_customer_name
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel:
       type: object
       properties:
@@ -154,11 +83,97 @@ components:
           description: Backup date UTC
           format: date-time
         problemsCount:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Problem count
           format: int32
-          nullable: true
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
+      enum:
+      - success
+      - partial
+      - failed
+      - successfulNoChanges
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel:
+      type: object
+      properties:
+        msId:
+          type:
+          - string
+          - 'null'
+          description: Microsoft Entra ID domain id
+        name:
+          type:
+          - string
+          - 'null'
+          description: Name of the domain
+        internalId:
+          type:
+          - string
+          - 'null'
+          description: UniView Domain id
+        region:
+          type:
+          - string
+          - 'null'
+          description: Region of the domain
+        licenseSubtype:
+          type:
+          - string
+          - 'null'
+          description: License type
+        mappedCustomerId:
+          type:
+          - string
+          - 'null'
+          description: Mapped customer UniView id
+          format: uuid
+        mappedCustomerName:
+          type:
+          - string
+          - 'null'
+          description: Mapped customer UniView name
+        numberOfSeats:
+          type:
+          - integer
+          - 'null'
+          description: Number of seats used
+          format: int32
+        numberOfUsedLicenses:
+          type:
+          - integer
+          - 'null'
+          description: Number of licenses used
+          format: int32
+        assignedLicenses:
+          type:
+          - integer
+          - 'null'
+          description: Number of licenses assigned to the domain
+          format: int32
+        expirationDate:
+          type:
+          - string
+          - 'null'
+          description: Domain expiration date
+          format: date-time
+        backupStatusForLast7Days:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        last30Backups:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel'
+          description: List of last 30 backups
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
+      enum:
+      - name
+      - mapped_customer_name
+      type: string
   securitySchemes:
     Bearer:
       type: apiKey

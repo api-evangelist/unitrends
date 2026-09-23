@@ -1,17 +1,7 @@
 {
   "provider": "unitrends",
   "sources": [
-    "unitrends-agents-api-openapi.yml",
-    "unitrends-appliances-api-openapi.yml",
-    "unitrends-assets-api-openapi.yml",
-    "unitrends-backupiqalerts-api-openapi.yml",
-    "unitrends-backups-api-openapi.yml",
-    "unitrends-customers-api-openapi.yml",
-    "unitrends-domains-api-openapi.yml",
-    "unitrends-domainsentra-api-openapi.yml",
-    "unitrends-domainsv2-api-openapi.yml",
-    "unitrends-domainusers-api-openapi.yml",
-    "unitrends-domainusersv2-api-openapi.yml"
+    "_original/unitrends-public-api-openapi.json"
   ],
   "outputs": [
     "unitrends-agents-api-openapi.yml",
@@ -20,15 +10,42 @@
     "unitrends-backupiqalerts-api-openapi.yml",
     "unitrends-backups-api-openapi.yml",
     "unitrends-customers-api-openapi.yml",
+    "unitrends-domainusers-api-openapi.yml",
+    "unitrends-domainusersv2-api-openapi.yml",
     "unitrends-domains-api-openapi.yml",
     "unitrends-domainsentra-api-openapi.yml",
-    "unitrends-domainsv2-api-openapi.yml",
-    "unitrends-domainusers-api-openapi.yml",
-    "unitrends-domainusersv2-api-openapi.yml"
+    "unitrends-domainsv2-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "unitrends-public-api-openapi.json: upgraded openapi 3.0.4 -> OpenAPI 3.2.0",
+    "unitrends-public-api-openapi.json: declared missing tag: Agents",
+    "unitrends-public-api-openapi.json: declared missing tag: Appliances",
+    "unitrends-public-api-openapi.json: declared missing tag: Assets",
+    "unitrends-public-api-openapi.json: declared missing tag: BackupIqAlerts",
+    "unitrends-public-api-openapi.json: declared missing tag: Backups",
+    "unitrends-public-api-openapi.json: declared missing tag: Customers",
+    "unitrends-public-api-openapi.json: declared missing tag: DomainUsers",
+    "unitrends-public-api-openapi.json: declared missing tag: DomainUsersV2",
+    "unitrends-public-api-openapi.json: declared missing tag: Domains",
+    "unitrends-public-api-openapi.json: declared missing tag: DomainsEntra",
+    "unitrends-public-api-openapi.json: declared missing tag: DomainsV2",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "unitrends-agents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-appliances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-backupiqalerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-backups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-domains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-domainsentra-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-domainsv2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-domainusers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unitrends-domainusersv2-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

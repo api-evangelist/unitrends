@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Public Agents Domains API
+  title: Public Domains API
   description: Description of Public API for Unitrends MSP.
   version: public_api-v1
 servers:
@@ -77,53 +77,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.DomainModel'
+      operationId: getV1SpanningDomains
+      x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel:
-      type: object
-      properties:
-        lastMailBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for mail
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-        lastContactBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for contact
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-        lastCalendarBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for calendar
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-        lastDriveBackupTimestamp:
-          type: string
-          description: Timestamp of last backup for drive
-          format: date-time
-          nullable: true
-          example: '2022-07-26T09:21:40Z'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel:
-      type: object
-      properties:
-        lastForMail:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastForContact:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastForCalendar:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastForDrive:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.GetDomainsRequestOrderColumn:
-      enum:
-      - number_of_users
-      - name
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
       enum:
       - success
@@ -145,147 +102,30 @@ components:
           format: int64
           example: 232323231
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.DomainBackupStatusLastSevenDaysModel:
-      type: object
-      properties:
-        totalForMail:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForContact:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForCalendar:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForDrive:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForSharePoint:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForTeams:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserModel:
-      type: object
-      properties:
-        id:
-          type: string
-          description: User unique identifier
-          nullable: true
-        email:
-          type: string
-          description: User email
-          nullable: true
-        lastBackupStatusTotal:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastBackupTimestampTotal:
-          type: string
-          description: Total last backup timestamp
-          format: date-time
-          nullable: true
-        lastBackupStatus:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel'
-        lastBackupTimestamp:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel'
-        backupStatusLastSevenDaysTotal:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        backupStatusLastSevenDays:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel'
-        storageInformation:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel:
-      type: object
-      properties:
-        totalForMail:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForContact:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForCalendar:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        totalForDrive:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel:
-      type: object
-      properties:
-        protectedBytes:
-          type: integer
-          description: Total protected  (number in bytes)
-          format: int64
-          nullable: true
-          example: 121323231
-        usedBytes:
-          type: integer
-          description: Total stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 242424244
-        protectedMailBytes:
-          type: integer
-          description: Mail protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 435353535
-        usedMailBytes:
-          type: integer
-          description: Mail stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 23423535
-        protectedOneDriveBytes:
-          type: integer
-          description: OneDrive protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 325235235
-        usedOneDriveBytes:
-          type: integer
-          description: OneDrive stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 234234234
-        protectedContactBytes:
-          type: integer
-          description: Contact protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 535325235
-        usedContactBytes:
-          type: integer
-          description: Contact stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 2352352352
-        protectedCalendarBytes:
-          type: integer
-          description: Calendar protected (number in bytes)
-          format: int64
-          nullable: true
-          example: 235235235
-        usedCalendarBytes:
-          type: integer
-          description: Calendar stored (number in bytes)
-          format: int64
-          nullable: true
-          example: 662326326
-      additionalProperties: false
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.DomainModel:
       type: object
       properties:
         id:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Unique identifier
-          nullable: true
         customerId:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Unique identifier of mapped customer
           format: uuid
-          nullable: true
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Tenant/Domain name
-          nullable: true
         region:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Region
-          nullable: true
         numberOfUsers:
           type: integer
           description: Number of users
@@ -299,19 +139,21 @@ components:
           description: Number of licenses in use
           format: int32
         expirationDate:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Expiration date (timestamp UTC)
           format: date-time
-          nullable: true
         storageInformation:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.DomainStorageInformationModel'
         lastBackupStatus:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
         lastBackupTimestamp:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Last backup timestamp
           format: date-time
-          nullable: true
         backupStatusLastSevenDaysTotal:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
         backupStatusLastSevenDays:
@@ -335,35 +177,223 @@ components:
           format: int32
           example: 123
         numberOfProtectedSharePointSites:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of protected SharePoint sites in the org
           format: int32
-          nullable: true
           example: 123
         numberOfUnprotectedSharePointSites:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of unprotected SharePoint sites in the org
           format: int32
-          nullable: true
           example: 45
         numberOfProtectedTeamChannels:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of protected Team channels in the org
           format: int32
-          nullable: true
           example: 4
         numberOfUnprotectedTeamChannels:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of unprotected Team channels in the org
           format: int32
-          nullable: true
           example: 12
         users:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserModel'
-          nullable: true
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel:
+      type: object
+      properties:
+        lastForMail:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        lastForContact:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        lastForCalendar:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        lastForDrive:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel:
+      type: object
+      properties:
+        protectedBytes:
+          type:
+          - integer
+          - 'null'
+          description: Total protected  (number in bytes)
+          format: int64
+          example: 121323231
+        usedBytes:
+          type:
+          - integer
+          - 'null'
+          description: Total stored (number in bytes)
+          format: int64
+          example: 242424244
+        protectedMailBytes:
+          type:
+          - integer
+          - 'null'
+          description: Mail protected (number in bytes)
+          format: int64
+          example: 435353535
+        usedMailBytes:
+          type:
+          - integer
+          - 'null'
+          description: Mail stored (number in bytes)
+          format: int64
+          example: 23423535
+        protectedOneDriveBytes:
+          type:
+          - integer
+          - 'null'
+          description: OneDrive protected (number in bytes)
+          format: int64
+          example: 325235235
+        usedOneDriveBytes:
+          type:
+          - integer
+          - 'null'
+          description: OneDrive stored (number in bytes)
+          format: int64
+          example: 234234234
+        protectedContactBytes:
+          type:
+          - integer
+          - 'null'
+          description: Contact protected (number in bytes)
+          format: int64
+          example: 535325235
+        usedContactBytes:
+          type:
+          - integer
+          - 'null'
+          description: Contact stored (number in bytes)
+          format: int64
+          example: 2352352352
+        protectedCalendarBytes:
+          type:
+          - integer
+          - 'null'
+          description: Calendar protected (number in bytes)
+          format: int64
+          example: 235235235
+        usedCalendarBytes:
+          type:
+          - integer
+          - 'null'
+          description: Calendar stored (number in bytes)
+          format: int64
+          example: 662326326
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel:
+      type: object
+      properties:
+        lastMailBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for mail
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+        lastContactBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for contact
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+        lastCalendarBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for calendar
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+        lastDriveBackupTimestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp of last backup for drive
+          format: date-time
+          example: '2022-07-26T09:21:40Z'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserModel:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+          description: User unique identifier
+        email:
+          type:
+          - string
+          - 'null'
+          description: User email
+        lastBackupStatusTotal:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        lastBackupTimestampTotal:
+          type:
+          - string
+          - 'null'
+          description: Total last backup timestamp
+          format: date-time
+        lastBackupStatus:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel'
+        lastBackupTimestamp:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel'
+        backupStatusLastSevenDaysTotal:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        backupStatusLastSevenDays:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel'
+        storageInformation:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel:
+      type: object
+      properties:
+        totalForMail:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForContact:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForCalendar:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForDrive:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.DomainBackupStatusLastSevenDaysModel:
+      type: object
+      properties:
+        totalForMail:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForContact:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForCalendar:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForDrive:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForSharePoint:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        totalForTeams:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.GetDomainsRequestOrderColumn:
+      enum:
+      - number_of_users
+      - name
+      type: string
   securitySchemes:
     Bearer:
       type: apiKey
