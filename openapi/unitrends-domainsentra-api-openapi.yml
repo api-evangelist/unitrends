@@ -73,28 +73,10 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel:
-      type: object
-      properties:
-        backupStatus:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        backupTimestamp:
-          type: string
-          description: Backup date UTC
-          format: date-time
-        problemsCount:
-          type:
-          - integer
-          - 'null'
-          description: Problem count
-          format: int32
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
       enum:
-      - success
-      - partial
-      - failed
-      - successfulNoChanges
+      - name
+      - mapped_customer_name
       type: string
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel:
       type: object
@@ -169,11 +151,29 @@ components:
             $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel'
           description: List of last 30 backups
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
       enum:
-      - name
-      - mapped_customer_name
+      - success
+      - partial
+      - failed
+      - successfulNoChanges
       type: string
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel:
+      type: object
+      properties:
+        backupStatus:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        backupTimestamp:
+          type: string
+          description: Backup date UTC
+          format: date-time
+        problemsCount:
+          type:
+          - integer
+          - 'null'
+          description: Problem count
+          format: int32
+      additionalProperties: false
   securitySchemes:
     Bearer:
       type: apiKey

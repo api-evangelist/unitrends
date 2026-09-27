@@ -150,30 +150,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.ConditionalAlertModel:
-      allOf:
-      - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel'
-      - type: object
-        properties:
-          interrogation_message:
-            type:
-            - string
-            - 'null'
-            description: The result of interrogation for alert underlying reason.
-            example: Appliance is offline. Backups have not been running as a result. Open appliance details page and check that the appliance is powered on and connected to the network. If the problem persists, please open a support case.
-        additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.MutedFilterModel:
-      enum:
-      - 'false'
-      - 'true'
-      - all
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertSeverityModel:
-      enum:
-      - alarm
-      - critical
-      - warning
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel:
       type: object
       properties:
@@ -224,27 +200,6 @@ components:
           description: Flag indicates that alert is muted on UI by settings of alerts specified on the portal.
           example: true
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertTypeModel:
-      enum:
-      - alert
-      - job
-      - conditional
-      - helix
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.OrderColumnModel:
-      enum:
-      - type
-      - severity
-      - customer_id
-      - customer_name
-      - asset_tag
-      - appliance_name
-      - asset_name
-      - asset_key
-      - job_name
-      - job_type
-      - is_dismissed
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.JobAlertModel:
       allOf:
       - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel'
@@ -263,6 +218,51 @@ components:
             description: The type of the job
             example: Backup
         additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertTypeModel:
+      enum:
+      - alert
+      - job
+      - conditional
+      - helix
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.MutedFilterModel:
+      enum:
+      - 'false'
+      - 'true'
+      - all
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.OrderColumnModel:
+      enum:
+      - type
+      - severity
+      - customer_id
+      - customer_name
+      - asset_tag
+      - appliance_name
+      - asset_name
+      - asset_key
+      - job_name
+      - job_type
+      - is_dismissed
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.ConditionalAlertModel:
+      allOf:
+      - $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.AlertModel'
+      - type: object
+        properties:
+          interrogation_message:
+            type:
+            - string
+            - 'null'
+            description: The result of interrogation for alert underlying reason.
+            example: Appliance is offline. Backups have not been running as a result. Open appliance details page and check that the appliance is powered on and connected to the network. If the problem persists, please open a support case.
+        additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.BackupIqAlerts.Models.BackupIqAlertSeverityModel:
+      enum:
+      - alarm
+      - critical
+      - warning
+      type: string
   securitySchemes:
     Bearer:
       type: apiKey

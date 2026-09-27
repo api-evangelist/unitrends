@@ -195,122 +195,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse:
-      type: object
-      properties:
-        start_time:
-          type: string
-          description: The backup start time.
-          format: date-time
-          example: '2020-02-28T13:27:15.200Z'
-        complete_time:
-          type:
-          - string
-          - 'null'
-          description: The backup completion time.
-          format: date-time
-          example: '2020-02-28T13:28:32.200Z'
-        size:
-          type: integer
-          description: The size of the backup in MB.
-          format: int64
-          example: 8060
-        type:
-          type:
-          - string
-          - 'null'
-          description: The type of the backup.
-          example: Full
-        status:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
-        replication_status:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
-      enum:
-      - Successful
-      - Warning
-      - Failed
-      - InProgress
-      - Unknown
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsRequestOrderColumn:
-      enum:
-      - customer_id
-      - asset_tag
-      - name
-      - type
-      - ip
-      - mac
-      - key
-      type: string
-    MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsRequestOrderColumn:
-      enum:
-      - name
-      - licenseType
-      - storageUsedBytes
-      - status
-      - customerName
-      - oS
-      - id
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsResponse:
-      type: object
-      properties:
-        customer_id:
-          type: string
-          description: The id of the customer in UUID format.
-          format: uuid
-          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
-        asset_tag:
-          type:
-          - string
-          - 'null'
-          description: The id of the appliance.
-          example: 8008-100-70130
-        name:
-          type:
-          - string
-          - 'null'
-          description: The name of the asset.
-          example: Asset 1
-        type:
-          type:
-          - string
-          - 'null'
-          description: The type of the asset.
-          example: Image Level Instance
-        ip:
-          type:
-          - string
-          - 'null'
-          description: The ip of the asset.
-          example: 192.168.127.4
-        mac:
-          type:
-          - string
-          - 'null'
-          description: The MAC address of the asset.
-          example: 00:00:00:00:00:16
-        key:
-          type: string
-          description: The unique identifier of the asset.
-          format: uuid
-          example: 9c07464f-482c-4296-b5f9-fb232016db90
-        last_backup:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse'
-        links:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse'
-          description: 'Links to other resources in API or web application user interface.
-
-            This field is not present by default.
-
-            If application should return this additional links payload, request should contain query parameter "?include[links]=all"'
-      additionalProperties: false
     MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsResponse:
       type: object
       properties:
@@ -392,15 +276,121 @@ components:
           description: Asset last online date
           format: date-time
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse:
+      type: object
+      properties:
+        start_time:
+          type: string
+          description: The backup start time.
+          format: date-time
+          example: '2020-02-28T13:27:15.200Z'
+        complete_time:
+          type:
+          - string
+          - 'null'
+          description: The backup completion time.
+          format: date-time
+          example: '2020-02-28T13:28:32.200Z'
+        size:
+          type: integer
+          description: The size of the backup in MB.
+          format: int64
+          example: 8060
+        type:
+          type:
+          - string
+          - 'null'
+          description: The type of the backup.
+          example: Full
+        status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
+        replication_status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
+      enum:
+      - Successful
+      - Warning
+      - Failed
+      - InProgress
+      - Unknown
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsResponse:
+      type: object
+      properties:
+        customer_id:
+          type: string
+          description: The id of the customer in UUID format.
+          format: uuid
+          example: d28a556c-d8de-48f9-8a64-90fdf03ec4d0
+        asset_tag:
+          type:
+          - string
+          - 'null'
+          description: The id of the appliance.
+          example: 8008-100-70130
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the asset.
+          example: Asset 1
+        type:
+          type:
+          - string
+          - 'null'
+          description: The type of the asset.
+          example: Image Level Instance
+        ip:
+          type:
+          - string
+          - 'null'
+          description: The ip of the asset.
+          example: 192.168.127.4
+        mac:
+          type:
+          - string
+          - 'null'
+          description: The MAC address of the asset.
+          example: 00:00:00:00:00:16
+        key:
+          type: string
+          description: The unique identifier of the asset.
+          format: uuid
+          example: 9c07464f-482c-4296-b5f9-fb232016db90
+        last_backup:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse'
+        links:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse'
+          description: 'Links to other resources in API or web application user interface.
+
+            This field is not present by default.
+
+            If application should return this additional links payload, request should contain query parameter "?include[links]=all"'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsRequestOrderColumn:
+      enum:
+      - customer_id
+      - asset_tag
+      - name
+      - type
+      - ip
+      - mac
+      - key
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse:
+      enum:
+      - WebInterface
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
       enum:
       - Successful
       - Failed
       - Unknown
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse:
-      enum:
-      - WebInterface
       type: string
     MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse:
       type: object
@@ -415,6 +405,16 @@ components:
           format: uri
           example: https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90
       additionalProperties: false
+    MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsRequestOrderColumn:
+      enum:
+      - name
+      - licenseType
+      - storageUsedBytes
+      - status
+      - customerName
+      - oS
+      - id
+      type: string
   securitySchemes:
     Bearer:
       type: apiKey

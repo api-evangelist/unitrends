@@ -68,24 +68,37 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
-      enum:
-      - success
-      - partial
-      - failed
-      - successfulNoChanges
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel:
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserModel:
       type: object
       properties:
-        lastForMail:
+        id:
+          type:
+          - string
+          - 'null'
+          description: User unique identifier
+        email:
+          type:
+          - string
+          - 'null'
+          description: User email
+        lastBackupStatusTotal:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastForContact:
+        lastBackupTimestampTotal:
+          type:
+          - string
+          - 'null'
+          description: Total last backup timestamp
+          format: date-time
+        lastBackupStatus:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel'
+        lastBackupTimestamp:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel'
+        backupStatusLastSevenDaysTotal:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastForCalendar:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastForDrive:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        backupStatusLastSevenDays:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel'
+        storageInformation:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel'
       additionalProperties: false
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel:
       type: object
@@ -193,38 +206,25 @@ components:
           format: date-time
           example: '2022-07-26T09:21:40Z'
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserModel:
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel:
       type: object
       properties:
-        id:
-          type:
-          - string
-          - 'null'
-          description: User unique identifier
-        email:
-          type:
-          - string
-          - 'null'
-          description: User email
-        lastBackupStatusTotal:
+        lastForMail:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        lastBackupTimestampTotal:
-          type:
-          - string
-          - 'null'
-          description: Total last backup timestamp
-          format: date-time
-        lastBackupStatus:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusModel'
-        lastBackupTimestamp:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupTimestampModel'
-        backupStatusLastSevenDaysTotal:
+        lastForContact:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        backupStatusLastSevenDays:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel'
-        storageInformation:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserStorageInformationModel'
+        lastForCalendar:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        lastForDrive:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel:
+      enum:
+      - success
+      - partial
+      - failed
+      - successfulNoChanges
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.UserBackupStatusLastSevenDaysModel:
       type: object
       properties:
