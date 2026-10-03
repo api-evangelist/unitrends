@@ -84,11 +84,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersRequestOrderColumn:
-      enum:
-      - id
-      - name
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersResponse:
       type: object
       properties:
@@ -104,6 +99,11 @@ components:
           description: The name of the customer.
           example: John Doe
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Customers.GetCustomers.GetCustomersRequestOrderColumn:
+      enum:
+      - id
+      - name
+      type: string
   securitySchemes:
     Bearer:
       type: apiKey

@@ -73,11 +73,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
-      enum:
-      - name
-      - mapped_customer_name
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel:
       type: object
       properties:
@@ -174,6 +169,11 @@ components:
           description: Problem count
           format: int32
       additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
+      enum:
+      - name
+      - mapped_customer_name
+      type: string
   securitySchemes:
     Bearer:
       type: apiKey

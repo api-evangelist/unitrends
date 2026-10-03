@@ -128,6 +128,23 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesRequestOrderColumn:
+      enum:
+      - asset_tag
+      - customer_id
+      - is_online
+      - name
+      - total_mb_free
+      - total_mb_size
+      - version
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus:
+      enum:
+      - None
+      - Agent
+      - AutoUpdate
+      - Unknown
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesResponse:
       type: object
       properties:
@@ -171,23 +188,6 @@ components:
         helix_status:
           $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus'
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.GetAppliancesRequestOrderColumn:
-      enum:
-      - asset_tag
-      - customer_id
-      - is_online
-      - name
-      - total_mb_free
-      - total_mb_size
-      - version
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Appliances.GetAppliances.HelixStatus:
-      enum:
-      - None
-      - Agent
-      - AutoUpdate
-      - Unknown
-      type: string
   securitySchemes:
     Bearer:
       type: apiKey
