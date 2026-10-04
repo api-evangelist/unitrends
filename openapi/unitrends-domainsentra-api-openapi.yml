@@ -73,6 +73,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel:
+      type: object
+      properties:
+        backupStatus:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
+        backupTimestamp:
+          type: string
+          description: Backup date UTC
+          format: date-time
+        problemsCount:
+          type:
+          - integer
+          - 'null'
+          description: Problem count
+          format: int32
+      additionalProperties: false
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiModel:
       type: object
       properties:
@@ -153,22 +169,6 @@ components:
       - failed
       - successfulNoChanges
       type: string
-    MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.BackupStatusWithDateAndProblemCountModel:
-      type: object
-      properties:
-        backupStatus:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.BackupStatusModel'
-        backupTimestamp:
-          type: string
-          description: Backup date UTC
-          format: date-time
-        problemsCount:
-          type:
-          - integer
-          - 'null'
-          description: Problem count
-          format: int32
-      additionalProperties: false
     MSP.Portal.PublicApi.Api.Controllers.Spanning.GetDomains.Entra.GetEntraDomainsForPublicApiRequestOrderColumn:
       enum:
       - name

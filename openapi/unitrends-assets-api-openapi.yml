@@ -195,6 +195,62 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse:
+      type: object
+      properties:
+        rel:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse'
+        href:
+          type:
+          - string
+          - 'null'
+          description: Specifies the URL the link goes to.
+          format: uri
+          example: https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse:
+      enum:
+      - WebInterface
+      type: string
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse:
+      type: object
+      properties:
+        start_time:
+          type: string
+          description: The backup start time.
+          format: date-time
+          example: '2020-02-28T13:27:15.200Z'
+        complete_time:
+          type:
+          - string
+          - 'null'
+          description: The backup completion time.
+          format: date-time
+          example: '2020-02-28T13:28:32.200Z'
+        size:
+          type: integer
+          description: The size of the backup in MB.
+          format: int64
+          example: 8060
+        type:
+          type:
+          - string
+          - 'null'
+          description: The type of the backup.
+          example: Full
+        status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
+        replication_status:
+          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
+      additionalProperties: false
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
+      enum:
+      - Successful
+      - Warning
+      - Failed
+      - InProgress
+      - Unknown
+      type: string
     MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsRequestOrderColumn:
       enum:
       - name
@@ -262,16 +318,6 @@ components:
 
             If application should return this additional links payload, request should contain query parameter "?include[links]=all"'
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsRequestOrderColumn:
-      enum:
-      - customer_id
-      - asset_tag
-      - name
-      - type
-      - ip
-      - mac
-      - key
-      type: string
     MSP.Portal.Eir.Api.PublicApi.Api.Controllers.Assets.Models.GetAssetsResponse:
       type: object
       properties:
@@ -353,67 +399,21 @@ components:
           description: Asset last online date
           format: date-time
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetApiLinkResponse:
-      type: object
-      properties:
-        rel:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse'
-        href:
-          type:
-          - string
-          - 'null'
-          description: Specifies the URL the link goes to.
-          format: uri
-          example: https://unitrends.backup.net/links/asset/9c07464f-482c-4296-b5f9-fb232016db90
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetLastBackupsResponse:
-      type: object
-      properties:
-        start_time:
-          type: string
-          description: The backup start time.
-          format: date-time
-          example: '2020-02-28T13:27:15.200Z'
-        complete_time:
-          type:
-          - string
-          - 'null'
-          description: The backup completion time.
-          format: date-time
-          example: '2020-02-28T13:28:32.200Z'
-        size:
-          type: integer
-          description: The size of the backup in MB.
-          format: int64
-          example: 8060
-        type:
-          type:
-          - string
-          - 'null'
-          description: The type of the backup.
-          example: Full
-        status:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus'
-        replication_status:
-          $ref: '#/components/schemas/MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus'
-      additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
-      enum:
-      - Successful
-      - Warning
-      - Failed
-      - InProgress
-      - Unknown
-      type: string
     MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
       enum:
       - Successful
       - Failed
       - Unknown
       type: string
-    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.ApiLinkTypeResponse:
+    MSP.Portal.PublicApi.Api.Controllers.Assets.GetAssets.GetAssetsRequestOrderColumn:
       enum:
-      - WebInterface
+      - customer_id
+      - asset_tag
+      - name
+      - type
+      - ip
+      - mac
+      - key
       type: string
   securitySchemes:
     Bearer:

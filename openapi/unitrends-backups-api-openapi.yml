@@ -141,6 +141,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsRequestOrderColumn:
+      enum:
+      - asset_tag
+      - customer_id
+      - start_time
+      - complete_time
+      - size
+      - type
+      - status
+      - replication_status
+      - asset_key
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsResponse:
       type: object
       properties:
@@ -188,17 +200,11 @@ components:
           format: uuid
           example: 9c07464f-482c-4296-b5f9-fb232016db90
       additionalProperties: false
-    MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsRequestOrderColumn:
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
       enum:
-      - asset_tag
-      - customer_id
-      - start_time
-      - complete_time
-      - size
-      - type
-      - status
-      - replication_status
-      - asset_key
+      - Successful
+      - Failed
+      - Unknown
       type: string
     MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
       enum:
@@ -206,12 +212,6 @@ components:
       - Warning
       - Failed
       - InProgress
-      - Unknown
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.ReplicationBackupStatus:
-      enum:
-      - Successful
-      - Failed
       - Unknown
       type: string
   securitySchemes:
