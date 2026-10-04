@@ -1,0 +1,25 @@
+slug: unitrends
+provider: Unitrends
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Backups
+  spec_file: unitrends-backups-api-openapi.yml
+  capability_id: BC-160.20
+  capability_id_l1: BC-160
+  capability_name: Disaster Recovery Management
+  confidence: 0.7
+  evidence: GET /v1/backups — 'Returns a list of backup details based on filtering, ordering and paging…';
+    schemas BackupStatus, ReplicationBackupStatus
+  reason: Directly exposes backup job/copy status and replication state, which is the core of IT backup
+    and disaster-recovery management.
