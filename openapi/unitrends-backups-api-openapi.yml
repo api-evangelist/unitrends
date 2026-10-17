@@ -141,6 +141,14 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
+      enum:
+      - Successful
+      - Warning
+      - Failed
+      - InProgress
+      - Unknown
+      type: string
     MSP.Portal.PublicApi.Api.Controllers.Backups.GetBackups.GetBackupsRequestOrderColumn:
       enum:
       - asset_tag
@@ -204,14 +212,6 @@ components:
       enum:
       - Successful
       - Failed
-      - Unknown
-      type: string
-    MSP.Portal.PublicApi.Api.Controllers.Backups.BackupStatusMapping.BackupStatus:
-      enum:
-      - Successful
-      - Warning
-      - Failed
-      - InProgress
       - Unknown
       type: string
   securitySchemes:
